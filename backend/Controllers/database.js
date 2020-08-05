@@ -2,6 +2,10 @@ const bcrypt = require('bcrypt');``
 const jwt = require('jsonwebtoken');
 const mysql = require('mysql');
 const express = require('express');
+const User = require('../model/modelUser')
+const mysql2 = require('mysql2');
+const bodyParser = require('body-parser');
+
 
 
 const NAME = process.env.NAME;
@@ -43,11 +47,13 @@ exports.createDataTable = (req, res) => {
     };
 
 exports.signup = (req, res, next) => {
+    console.log(req.body.lastname)
     const user = req.body
-    console.log(req.body)
+    console.log(user)
     bcrypt.hash(user.password, 10)
     .then((hash) => {
         user.password = hash
+        console
         db.query('INSERT INTO posts SET ?', function(err, result, field){
             if (err) {
                 console.log(err)

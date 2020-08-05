@@ -1,26 +1,26 @@
 <template>
     <div id="from">
-        <form>
+        <form method="POST"  @submit.prevent = "envoi">
           <div class="form-group col-lg-3 col-sm-6">
             <label for="email">Votre email</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            <input type="email" class="form-control" name="" value="" id="email" v-model="email">
             <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <div class="form-group col-lg-3 col-sm-6">
             <label for="lastname">Nom</label>
-            <input type="text" class="form-control" id="lastname" aria-describedby="emailHelp">
+            <input type="text" class="form-control" name="" value="" id="lastname" v-model="lastname">
             <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <div class="form-group col-lg-3 col-sm-6">
             <label for="firstname">Prénom</label>
-            <input type="text" class="form-control" id="firstname" aria-describedby="emailHelp">
+            <input type="text" class="form-control" name="" value="" id="firstname" v-model="firstname">
             <small id="emailHelp" class="form-text text-muted"></small>
           </div>
           <div class="form-group col-lg-3 col-sm-6">
             <label for="password">votre mot de passe</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" class="form-control" name="" value="" id="password" v-model="password">
           </div>
-          <button  v-on:click = "envoi" type="submit" class="btn btn-primary">Submit</button>
+          <button  type="submit" class="btn btn-primary">Envoyer</button>
         </form>
     </div> 
 </template>
@@ -34,18 +34,31 @@ export default {
     data(){
       return{
         email:"",
-        nom:"",
-        prenom:""
-      }
+        lastname:"",
+        firstname:"",
+        password:""   
+       }
     },
     methods:{
       envoi : function () {
         
-        axios.post('http://localhost:3000/api/signup')
-        .then()
+        axios.post('http://localhost:3000/api/signup', {
+          email: this.email,
+          lastname: this.lastname,
+          firstname: this.firstname,
+          password: this.password,
+          show: false
+          
+        },
+        {
+          headers: {
+            'Content-type': 'application/x-www-form-urlencoded',
+              }
+        })
+       .then (() => console.log('envoyé'))
+       .catch(() => console.log('pourquoi'))  
       }
-    }
-
+    } 
 }
 </script>
 
