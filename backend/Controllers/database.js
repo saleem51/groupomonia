@@ -1,10 +1,6 @@
 const bcrypt = require('bcrypt');``
 const jwt = require('jsonwebtoken');
 const mysql = require('mysql');
-const express = require('express');
-const User = require('../model/modelUser')
-const mysql2 = require('mysql2');
-const bodyParser = require('body-parser');
 
 
 
@@ -15,7 +11,8 @@ const HOST = process.env.HOST;
 const db = mysql.createConnection({
     host     : HOST,
     user     : NAME,
-    password : PASS
+    password : PASS,
+    database: 'Groupomania'
 });
 
 db.connect((err) => {
@@ -28,7 +25,7 @@ db.connect((err) => {
 
 
 exports.createDataBase = (req, res, next) => {
-        let sql = 'CREATE DATABASE Groupomania';
+        let sql = 'CREATE DATABASE deuxieme';
         db.query(sql, (err, result) => {
             if (err) throw err;
             console.log(result)
@@ -37,9 +34,8 @@ exports.createDataBase = (req, res, next) => {
     };
 
 exports.createDataTable = (req, res) => {
-        let select = 'USE Groupomania';
-        let tbl = 'CREATE TABLE posts (id int AUTO_INCREMENT, nom VARCHAR(100), prenom VARCHAR(100), email VARCHAR(250), PRIMARY KEY (id))'
-        db.query(select,tbl, (err, result) => {
+        let tbl = 'CREATE TABLE Users (id int AUTO_INCREMENT, email VARCHAR(250), lastname VARCHAR(100), firstname VARCHAR(100),password VARCHAR(255), PRIMARY KEY(id))'
+        db.query(tbl, (err, result) => {
             if (err) throw err
             console.log(result)
             res.send('table created !')
@@ -47,19 +43,17 @@ exports.createDataTable = (req, res) => {
     };
 
 exports.signup = (req, res, next) => {
-    console.log(req.body.lastname)
     const user = req.body
     console.log(user)
-    bcrypt.hash(user.password, 10)
+     bcrypt.hash(user.password, 10) 
     .then((hash) => {
         user.password = hash
-        console
-        db.query('INSERT INTO posts SET ?', function(err, result, field){
+        db.query(`INSERT INTO Users SET ?`, user, function(err, result, field){
             if (err) {
                 console.log(err)
-                return res.status(400).json(err.sqlMessage)
+                return res.status(400).json("erreur")
             }
             return res.status(201).json({message : 'Votre compte a bien été créer !'})
         });
-    })
+    });
 };  

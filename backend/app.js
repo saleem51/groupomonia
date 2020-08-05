@@ -5,6 +5,7 @@ const rateLimit = require('express-rate-limit'); // limitation du nombre de requ
 const xss = require("xss");//contre les attaques xss (injections de scripts malveillants)
 const html = xss('<script>alert("xss");</script>');
 const helmet = require('helmet');
+const cors = require('cors');
 require('axios');
 
 
@@ -25,9 +26,10 @@ app.use((req, res, next) => { // configuration des CORS, pour permettre à diff�
 
 
 
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());//body parser pour convertir les objets JSON des requêtes POST
 app.use(express.json());
+app.use(cors());
 
 app.use('/api/', dataRoute);
 

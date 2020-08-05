@@ -23,12 +23,6 @@ module.exports = db.sequelize.define('user',{
     password: {
         type: Sequelize.STRING,
     },
-    created: {
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
-    }
+   
     
-}),
-{
-    timestamps: false
-}
+})

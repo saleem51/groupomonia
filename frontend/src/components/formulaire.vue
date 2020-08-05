@@ -47,16 +47,15 @@ export default {
           lastname: this.lastname,
           firstname: this.firstname,
           password: this.password,
-          show: false
-          
         },
         {
           headers: {
-            'Content-type': 'application/x-www-form-urlencoded',
+            'Content-type': 'application/json',
+            //x-www-form-urlencoded
               }
         })
-       .then (() => console.log('envoyé'))
-       .catch(() => console.log('pourquoi'))  
+       .then (() => console.log('Inscription réussi !'))
+       .catch(() => console.log('Echec de l\'inscription'))  
       }
     } 
 }
