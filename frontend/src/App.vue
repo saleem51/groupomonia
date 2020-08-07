@@ -1,22 +1,25 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Page d'accueil</router-link>
-      <router-link to="/about">inscription</router-link>
-    </div>
-    <router-view/>
-    <formulaire></formulaire>
+  <headtop></headtop>
+  <footbottom></footbottom>
+  <router-view/>
+    
   </div>
 </template>
 <script>
 
-import formulaire from './components/formulaire.vue'
+window.location.href = "http://localhost:8080/#/Home";
+
+import headtop from './components/headtop.vue'
+import footbottom from './components/footbottom.vue'
 
 export default{
   name: 'App',
-  components:{
-    'formulaire' : formulaire
+  components: {
+    'headtop': headtop,
+    'footbottom': footbottom,
   }
+
 }
 </script>
 
@@ -33,15 +36,5 @@ export default{
 
 #nav {
   padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-      margin: 50px
-    }
-  }
 }
 </style>

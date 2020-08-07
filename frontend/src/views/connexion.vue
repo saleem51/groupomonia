@@ -1,17 +1,17 @@
 <template>
-  <div class="about">
-    <formulaire></formulaire>
+  <div class="connexion">
+    <formconnex></formconnex>
   </div>
 </template>
 
 <script>
 
-import formulaire from '../components/formulaire.vue'
+import formconnex from '../components/formconnex.vue'
 
 export default{
   name: 'App',
   components:{
-    'formulaire' : formulaire
+    'formconnex' : formconnex
   }
 }
 </script>

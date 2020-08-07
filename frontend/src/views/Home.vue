@@ -1,32 +1,22 @@
 <template>
   <div class="home">
-    <img id="icon" alt="Vuelogo" src="../assets/icon-above-font.png">
-    <HelloWorld msg="Le réseau fait pour vous "/>
-
-
-    
+    <Accueil></Accueil>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
+import Accueil from '../components/Accueil.vue'
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+export default{
+  name: 'App',
+  components:{
+    'Accueil' : Accueil
   }
 }
-
 </script>
 
-<style lang="scss">
-
-#icon{
-  width: 200px;
-}
-
+<style lang="scss" scoped>
 
 </style>
+
