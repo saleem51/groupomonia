@@ -7,12 +7,13 @@
       <form method="POST"  @submit.prevent = "envoi">
         <div class="form-group col-lg-3 col-sm-6">
           <label for="email">Votre email</label>
-          <input type="email" class="form-control" name="" value="" id="email" v-model="email">
+          <input type="email" class="form-control" name="" value="" id="email" pattern="[a-zâäàéèùêëîïôöçñA-Z0-9.-_]+[@]{1}[a-zA_Z0-9.-_]+[.]{1}[a-z]{2,4}" v-model="email">
           <small id="emailHelp" class="form-text text-muted"></small>
         </div>
         <div class="form-group col-lg-3 col-sm-6">
           <label for="password">Mot de passe</label>
-          <input type="password" class="form-control" name="" value="" id="password" v-model="password">
+          <input type="password"  class="form-control" name="" value="" id="password" pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})" v-model="password">
+          <small id="smallpass" class="text-danger"></small>
         </div>
         <button  type="submit" class="btn btn-primary">Connexion</button>
       </form>
@@ -33,8 +34,12 @@ export default {
     },
     methods:{
       envoi : function () {
-        
-        axios.post('http://localhost:3000/api/signup', {
+
+        if(this.email == "" || this.password == ""){
+          alert("Veuillez entrer votre email et votre mot de passe pour vous connecter")
+        } else {
+
+          axios.post('http://localhost:3000/api/login', {
           email: this.email,
           password: this.password,
         },
@@ -44,9 +49,19 @@ export default {
             //x-www-form-urlencoded
               }
         })
-       .then (() => console.log('Inscription réussi !'))
-       .catch(() => console.log('Echec de l\'inscription'))  
-      }
+       .then (() => { 
+                    console.log('Inscription réussi !')
+                    window.location.href = "http://localhost:8080/#/mur"
+       })
+       .catch(() =>{
+         console.log('Mot de passe incorect')
+         document.querySelector('#smallpass').innerHTML = 'Mot de passe incorrect'
+       }) 
+
+        }
+
+      },
+      
     } 
 }
 </script>

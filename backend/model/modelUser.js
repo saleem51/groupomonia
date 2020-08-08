@@ -11,18 +11,23 @@ module.exports = db.sequelize.define('user',{
         autoIncrement: true,
         primaryKey: true
     },
+     email: {
+        type: Sequelize.STRING,
+    },
     lastname: {
         type: Sequelize.STRING,
     },
     firstname: {
         type: Sequelize.STRING,
     },
-    email: {
-        type: Sequelize.STRING,
-    },
     password: {
         type: Sequelize.STRING,
     },
-   
-    
-})
+    created: {
+        type : Sequelize.DATE,
+        defaultValue : Sequelize.NOW
+    }
+}),
+{
+    timestamps : false
+}

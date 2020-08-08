@@ -7,9 +7,10 @@ const html = xss('<script>alert("xss");</script>');
 const helmet = require('helmet');
 const cors = require('cors');
 require('axios');
+const dotenv = require("dotenv");
 
 
-require("dotenv").config(); //masquage des informations sensibles comme les idantifiants et les mots de passes
+dotenv.config({path: './.env'}); //masquage des informations sensibles comme les idantifiants et les mots de passes
 
 
 const app = express();

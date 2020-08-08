@@ -16,6 +16,7 @@ const createAccountLimiter = rateLimit ( { // limitation du nombre de création 
 router.get('/createdb', dataCtlr.createDataBase);
 router.get('/createtables', dataCtlr.createDataTable);
 router.post('/signup', dataCtlr.signup)
+router.post('/login', dataCtlr.login)
 
 
 module.exports = router;
