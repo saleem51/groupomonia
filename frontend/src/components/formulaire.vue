@@ -24,7 +24,13 @@
           <label for="password">Mot de passe</label>
           <input type="password" v-on:focus="showdiv" v-on:blur="maskdiv" class="form-control" name="" value="" id="password"  pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})" v-model="password">
         </div>
+        <div class="form-group col-lg-3 col-sm-6">
+          <label for="password2"> Confirmez le mot de passe</label>
+          <input type="password" v-on:blur="verif" class="form-control" name="" value="" id="password2"  pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})" v-model="password2">
+          <small id="confirm" class="text-danger"></small>
+        </div>
         <button  type="submit" class="btn btn-primary">S'inscrire</button>
+        <p>Déjà inscrit ? <a href="/#/connexion">Connectez-vous</a></p>
       </form>
       <div id="showfocus">
         <h4>Votre mot de passe doit contenir:</h4>
@@ -51,7 +57,8 @@ export default {
         email:"",
         lastname:"",
         firstname:"",
-        password:""   
+        password:"",
+        password2:""   
        }
     },
     methods:{
@@ -59,8 +66,9 @@ export default {
 
         if (this.email == "" || this.lastname == "" || this.firstname == "" || this.password == ""  ){
           alert('Veuillez remplir tous les champs avant d\'envoyer le formulaire !')
-        }else{
-          
+        }else if (this.password != this.password2){
+          alert('Les deux mots de passe ne sont pas identiques !')
+        }else {
         axios.post('http://localhost:3000/api/signup', {
           email: this.email,
           lastname: this.lastname,
@@ -89,6 +97,13 @@ export default {
 
       maskdiv: function() {
         document.getElementById('showfocus').style.display = 'none';
+      },
+      verif: function() {
+        if (this.password != this.password2){
+          document.getElementById('confirm').innerHTML = 'Veuillez entrer le même mot de passe'
+        } else {
+          document.getElementById('confirm').innerHTML = ''
+        }
       }
     } 
 }
@@ -135,14 +150,14 @@ form{
 
 .form-group{
   position: relative;
-  bottom: 80px;
+  bottom: 120px;
   margin-right: auto;
   margin-left: auto;
 }
 
 button{
   position: relative;
-  bottom: 85px;
+  bottom: 75px;
   
 }
 

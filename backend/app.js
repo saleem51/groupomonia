@@ -8,6 +8,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 require('axios');
 const dotenv = require("dotenv");
+const session = require('express-session');
 
 
 dotenv.config({path: './.env'}); //masquage des informations sensibles comme les idantifiants et les mots de passes
@@ -26,8 +27,18 @@ app.use((req, res, next) => { // configuration des CORS, pour permettre à diff�
   });
 
 
+app.use(session({
 
-app.use(bodyParser.urlencoded({ extended: false}));
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+    
+  }));
+
+//app.set('view-engine', 'ejs');
+
+
+app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());//body parser pour convertir les objets JSON des requêtes POST
 app.use(express.json());
 app.use(cors());

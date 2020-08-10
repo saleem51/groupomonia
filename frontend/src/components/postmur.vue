@@ -1,10 +1,13 @@
 <template>
     <div id="nav">
       <router-link id="routhome" to="/Home">Groupomania</router-link>
+     
     </div>
 </template>
 
 <script>
+
+
 
 export default {
     name:'postmur',
@@ -25,6 +28,13 @@ export default {
       font-size: 1.8em;
       bottom: 85px;
   }
+}
+
+#deconec{
+  position: relative;
+  bottom: 80px;
+  left: 400px;
+  color: #FFF;
 }
 
 

@@ -4,7 +4,7 @@
       <router-link id="routhome" to="/Home">Groupomania</router-link>
       <h1>Connexion</h1>
     </div>
-      <form method="POST"  @submit.prevent = "envoi">
+      <form method="POST" id="formulaire" @submit.prevent = "envoi">
         <div class="form-group col-lg-3 col-sm-6">
           <label for="email">Votre email</label>
           <input type="email" class="form-control" name="" value="" id="email" pattern="[a-zâäàéèùêëîïôöçñA-Z0-9.-_]+[@]{1}[a-zA_Z0-9.-_]+[.]{1}[a-z]{2,4}" v-model="email">
@@ -15,7 +15,8 @@
           <input type="password"  class="form-control" name="" value="" id="password" pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})" v-model="password">
           <small id="smallpass" class="text-danger"></small>
         </div>
-        <button  type="submit" class="btn btn-primary">Connexion</button>
+        <button type="submit" class="btn btn-primary">Connexion</button>
+        <p>Pas encore inscrit ? <a href="/#/about">Inscrivez-vous</a></p>
       </form>
   </div> 
 </template>
@@ -29,7 +30,8 @@ export default {
     data(){
       return{
         email:"",
-        password:""   
+        password:"",
+        
        }
     },
     methods:{
@@ -38,7 +40,7 @@ export default {
         if(this.email == "" || this.password == ""){
           alert("Veuillez entrer votre email et votre mot de passe pour vous connecter")
         } else {
-
+          
           axios.post('http://localhost:3000/api/login', {
           email: this.email,
           password: this.password,
@@ -50,7 +52,7 @@ export default {
               }
         })
        .then (() => { 
-                    console.log('Inscription réussi !')
+                    console.log('Connexion réussi !')
                     window.location.href = "http://localhost:8080/#/mur"
        })
        .catch(() =>{
@@ -61,6 +63,7 @@ export default {
         }
 
       },
+      
       
     } 
 }
