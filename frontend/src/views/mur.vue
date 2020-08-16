@@ -1,20 +1,17 @@
 <template>
     <div class="mur">
-        <headmur></headmur>
-        <postmur></postmur>
+        <mur></mur>
     </div>
 </template>
 
 <script>
 
-import postmur from '../components/postmur'
-import headmur from '../components/headmur'
+import mur from '../components/mur'
 
 export default {
     name: 'App',
   components:{
-    'postmur' : postmur,
-    'headmur' : headmur
+    'mur' : mur,
   }
 }
 

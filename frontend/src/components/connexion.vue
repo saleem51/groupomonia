@@ -6,9 +6,9 @@
     </div>
       <form method="POST" id="formulaire" @submit.prevent = "envoi">
         <div class="form-group col-lg-3 col-sm-6">
-          <label for="email">Votre email</label>
-          <input type="email" class="form-control" name="" value="" id="email" pattern="[a-zâäàéèùêëîïôöçñA-Z0-9.-_]+[@]{1}[a-zA_Z0-9.-_]+[.]{1}[a-z]{2,4}" v-model="email">
-          <small id="emailHelp" class="form-text text-muted"></small>
+          <label for="pseudo">Votre pseudo</label>
+          <input type="text" class="form-control" name="" value="" id="pseudo" pattern="[a-zâäàéèùêëîïôöçñA-Z-0-9\s]{3,25}" v-model="username">
+          <small id="pseudo" class="form-text text-muted"></small>
         </div>
         <div class="form-group col-lg-3 col-sm-6">
           <label for="password">Mot de passe</label>
@@ -25,11 +25,12 @@
 
 import axios from 'axios'
 
+
 export default {
-    name: 'formconnex',
+    name: 'connexion',
     data(){
       return{
-        email:"",
+        username:"",
         password:"",
         
        }
@@ -37,12 +38,12 @@ export default {
     methods:{
       envoi : function () {
 
-        if(this.email == "" || this.password == ""){
+        if(this.username == "" || this.password == ""){
           alert("Veuillez entrer votre email et votre mot de passe pour vous connecter")
         } else {
           
           axios.post('http://localhost:3000/api/login', {
-          email: this.email,
+          username: this.username,
           password: this.password,
         },
         {
@@ -51,13 +52,17 @@ export default {
             //x-www-form-urlencoded
               }
         })
-       .then (() => { 
+       .then ( () => { 
+                    
                     console.log('Connexion réussi !')
+                   
                     window.location.href = "http://localhost:8080/#/mur"
+                    localStorage.setItem('username', this.username)
+                    
        })
        .catch(() =>{
-         console.log('Mot de passe incorect')
-         document.querySelector('#smallpass').innerHTML = 'Mot de passe incorrect'
+         console.log('la connexion a échouée')
+         document.querySelector('#smallpass').innerHTML = 'pseudo ou mot de  passe incorrect'
        }) 
 
         }

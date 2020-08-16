@@ -12,7 +12,7 @@
             Espace membre
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <router-link class="dropdown-item" to="/about">Inscription</router-link>
+              <router-link class="dropdown-item" to="/inscription">Inscription</router-link>
               <div class="dropdown-divider"></div>
               <router-link  class="dropdown-item" to="/connexion">Connexion</router-link>
             </div>

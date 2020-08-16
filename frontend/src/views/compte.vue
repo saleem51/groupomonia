@@ -1,19 +1,21 @@
 <template>
-  <div class="home">
-    <accueil></accueil>
+  <div class="compte">
+    <moncompte></moncompte>
   </div>
 </template>
 
 <script>
 
 
-import accueil from '../components/accueil.vue'
+import moncompte from '../components/moncompte.vue'
+
 
 export default{
   name: 'App',
   components:{
-    'accueil' : accueil,
     
+    'moncompte' : moncompte,
+   
   }
 }
 </script>
@@ -21,4 +23,3 @@ export default{
 <style lang="scss" scoped>
 
 </style>
-

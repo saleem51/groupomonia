@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+  <headtop></headtop>
   <footbottom></footbottom>
   <router-view/>
     
@@ -9,7 +10,7 @@
 
 window.location.href = "http://localhost:8080/#/home";
 
-//import headtop from './components/headtop.vue'
+import headtop from './components/headtop.vue'
 import footbottom from './components/footbottom.vue'
 
 export default{
@@ -17,10 +18,11 @@ export default{
   data(){
 
       return {
-        emailsend : this.email
+        
     }
   },
   components: {
+    'headtop' : headtop,
     'footbottom': footbottom,
   }
 

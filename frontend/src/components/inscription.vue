@@ -11,14 +11,9 @@
           <small id="emailHelp" class="form-text text-muted"></small>
         </div>
         <div class="form-group col-lg-3 col-sm-6">
-          <label for="lastname">Nom</label>
-          <input type="text" class="form-control" name="" value="" id="lastname" pattern="[a-zâäàéèùêëîïôöçñA-Z-\s]{3,25}" v-model="lastname">
-          <small id="emailHelp" class="form-text text-muted"></small>
-        </div>
-        <div class="form-group col-lg-3 col-sm-6">
-          <label for="firstname">Prénom</label>
-          <input type="text" class="form-control" name="" value="" id="firstname" pattern="[a-zâäàéèùêëîïôöçñA-Z-\s]{3,25}" v-model="firstname">
-          <small id="emailHelp" class="form-text text-muted"></small>
+          <label for="username"> Votre pseudo</label>
+          <input type="text" class="form-control" name="" value="" id="username" pattern="[a-zâäàéèùêëîïôöçñA-Z-0-9\s]{3,25}" v-model="username">
+          <small id="pseudo" class="form-text text-muted"></small>
         </div>
         <div class="form-group col-lg-3 col-sm-6">
           <label for="password">Mot de passe</label>
@@ -51,12 +46,11 @@
 import axios from 'axios'
 
 export default {
-    name: 'formulaire',
+    name: 'inscription',
     data(){
       return{
         email:"",
-        lastname:"",
-        firstname:"",
+        username:"",
         password:"",
         password2:""   
        }
@@ -64,15 +58,14 @@ export default {
     methods:{
       envoi : function () {
 
-        if (this.email == "" || this.lastname == "" || this.firstname == "" || this.password == ""  ){
+        if (this.email == "" || this.username == "" || this.password == ""  ){
           alert('Veuillez remplir tous les champs avant d\'envoyer le formulaire !')
         }else if (this.password != this.password2){
           alert('Les deux mots de passe ne sont pas identiques !')
         }else {
         axios.post('http://localhost:3000/api/signup', {
           email: this.email,
-          lastname: this.lastname,
-          firstname: this.firstname,
+          username: this.username,
           password: this.password,
         },
         {
@@ -83,7 +76,6 @@ export default {
         })
        .then (() => {
          console.log('Inscription réussi !')
-         window.location.href = "http://localhost:8080/#/mur"
          })
        .catch(() => console.log('Echec de l\'inscription')) 
         }

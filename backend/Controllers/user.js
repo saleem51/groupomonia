@@ -1,47 +1,112 @@
-const User = require('../models/User');
-const bcrypt = require('bcrypt');``
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const mysql = require('mysql');
+const db = require('../mysqlconfig');
+const dotenv = require("dotenv");
+dotenv.config({path: './.env'}); 
+const TOKEN = process.env.TOKEN;
 
 
-//Inscription de l'utilisateur/trice
-exports.signUp = (req, res, next) => {
-    bcrypt.hash(req.body.password, 10)
-      .then(hash => {
-        const user = new User({
-          email: req.body.email,
-          password: hash
+
+exports.createDataBase = (req, res, next) => {
+        let sql = 'CREATE DATABASE Groupomnia';
+        db.query(sql, (err, result) => {
+            if (err) throw err;
+            console.log(result)
+            res.send('databse created...')
+      });
+    };
+
+exports.createDataTable = (req, res) => {
+        let tbl = 'CREATE TABLE user  ( id int NOT NULL AUTO_INCREMENT, email varchar(100) NOT NULL, username  varchar(100) NOT NULL,password varchar(250) NOT NULL, isAdmin tinyint NOT NULL DEFAULT 0 ,PRIMARY KEY (id),UNIQUE KEY id_UNIQUE (id),UNIQUE KEY email_UNIQUE (email),UNIQUE KEY username_UNIQUE (username))ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8';
+        db.query(tbl, (err, result) => {
+            if (err) throw err
+            console.log(result)
+            res.send('table created !')
         });
-        user.save()
-          .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-          .catch(error => res.status(400).json({ error }));
-      })
-      .catch(error => res.status(500).json({ error }));
-      
+    };
+
+    
+exports.signup = (req, res, next) => {
+    const user = req.body
+     bcrypt.hash(user.password, 10) 
+    .then((hash) => {
+        user.password = hash
+        db.query(`INSERT INTO user SET ?`, user, (err, result, field) => {
+            if (err) {
+                console.log(err)
+                return res.status(400).json("erreur")
+            }
+            return res.status(201).json({message : 'Votre compte a bien été crée !'})
+        });
+    });
+};  
+
+
+exports.login = (req, res, next) => {
+    const username = req.body.username
+	  const password = req.body.password
+	if (username && password) {
+      db.query('SELECT * FROM user WHERE username= ?', username, (error, results, _fields) => {
+           if (results.length > 0) {
+            bcrypt.compare(password, results[0].password).then((valid) => {
+              if (!valid) {
+                res.status(401).json({ message: 'Utilisateur ou mot de passe inconnu' })
+              } else {
+                console.log(username, "s'est connecté")
+                let status = ''
+                if (results[0].isAdmin === 1) {
+                  status = 'admin'
+                } else {
+                  status = 'member'
+                }
+                res.status(200).json({
+                  userId: results[0].id,
+                  username: results[0].username,
+                  email: results[0].email,
+                  status: status,
+                  token: jwt.sign({ userId: results[0].id, role: status },TOKEN,{ expiresIn: '24h' })
+                })
+                
+              }
+            })
+          } 
+          else {
+            res.status(401).json({ message: 'Utilisateur ou mot de passe inconnu' })
+          }
+        }
+      )
+    } else {
+      res.status(500).json({ message: "Entrez votre email et votre mot de passe" })
+    }
   }
 
-  //Connexion de l'utilisateur/trice
-  exports.login = (req, res, next) => {
-    User.findOne({ email: req.body.email })
-      .then(user => {
-        if (!user) {
-          return res.status(401).json({ error: 'Utilisateur non trouvé !' });
+
+  exports.deleteUser = (req, res, next) => {
+    db.query(
+      `DELETE FROM user WHERE id=${req.params.id}`,
+      req.params.id,
+      function (error) {
+        if (error) {
+          console.log('le compte n\'a pas été supprimé !')
+          return res.status(400).json(error)
         }
-        bcrypt.compare(req.body.password, user.password)
-          .then(valid => {
-            if (!valid) {
-              return res.status(401).json({ error: 'Mot de passe incorrect !' });
-            }
-            res.status(200).json({
-              userId: user._id,
-              token: jwt.sign(
-                { userId: user._id },
-                'RANDOM_TOKEN_SECRET',
-                { expiresIn: '24h' }
-              )
-            });
-          })
-          .catch(error => res.status(500).json({ error: "erreur sur le premier catch" }));
-      })
-      .catch(error => res.status(500).json({ error :"erreur sur le deuxième catch" }));
+        console.log('Le compte a bien été supprimé !')
+        return res.status(200).json({ message: 'Votre compte a bien été supprimé !' })
+        
+      }
+    )
   }
+
+  exports.getUsers = (req, res, next) => {
+    db.query(
+      'SELECT id, username, isAdmin, email FROM user',
+      function (error, results) {
+        if (error) {
+          return res.status(400).json(error)
+        }
+        return res.status(200).json( results )
+      }
+    )
+  }
+  
+  

@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const rateLimit = require('express-rate-limit');
-const dataCtlr = require('../Controllers/database');
-const mysql  = require('mysql');
-const mysql2 = require('mysql2');
+const dataCtlr = require('../Controllers/user');
+
 
 const createAccountLimiter = rateLimit ( { // limitation du nombre de création de comptes à partir de la même adress IP, limitation fixée à 5 mais modulables
     windowMs : 60 * 60 * 1000 , //  fenêtre de 1 heure      
@@ -15,8 +14,11 @@ const createAccountLimiter = rateLimit ( { // limitation du nombre de création 
   
 router.get('/createdb', dataCtlr.createDataBase);
 router.get('/createtables', dataCtlr.createDataTable);
-router.post('/signup', dataCtlr.signup)
+router.get('/getusers', dataCtlr.getUsers)
+router.post('/signup', createAccountLimiter, dataCtlr.signup)
 router.post('/login', dataCtlr.login)
+router.post('/deleteUser', dataCtlr.deleteUser)
+
 
 
 module.exports = router;

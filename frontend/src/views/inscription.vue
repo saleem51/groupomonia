@@ -1,18 +1,18 @@
 <template>
-  <div class="connexion">
-    <connexion></connexion>
+  <div class="about">
+    <inscription></inscription>
   </div>
 </template>
 
 <script>
 
 
-import connexion from '../components/connexion.vue'
+import inscription from '../components/inscription.vue'
 
 export default{
   name: 'App',
   components:{
-    'connexion' : connexion
+    'inscription' : inscription
   }
 }
 </script>
