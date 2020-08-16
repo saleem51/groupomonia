@@ -128,6 +128,7 @@ h1{
   text-decoration: none;
   font-size: 2.4em;
   position: relative;
+  font-weight: 500;
   bottom: 95px;
   color: #FFF!important;
   @media screen and (max-width:1024px){

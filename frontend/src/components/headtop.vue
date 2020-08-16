@@ -2,23 +2,6 @@
   <div class="home" id="hom">
     <nav class="navbar navbar-expand-lg navbar-light bg-primary" id="navv">
       <img id="icon" alt="logo de l'entreprise" src="../assets/icon-left-font-monochrome-white.png">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown" id="linav">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Espace membre
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <router-link class="dropdown-item" to="/inscription">Inscription</router-link>
-              <div class="dropdown-divider"></div>
-              <router-link  class="dropdown-item" to="/connexion">Connexion</router-link>
-            </div>
-          </li>
-        </ul>
-      </div>
     </nav>
   </div>
 </template>

@@ -97,6 +97,7 @@ h1{
   font-size: 2.4em;
   position: relative;
   bottom: 95px;
+  font-weight: 500;
   color: #FFF!important;
   @media screen and (max-width:1024px){
       font-size: 1.8em;

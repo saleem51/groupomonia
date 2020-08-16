@@ -2,8 +2,7 @@
 <div class="Home">
     <h1>Groupomania</h1>
     <div class="img">
-        <img src="../assets/reseau3.jpg" alt="Photo de la page d'accueil">
-        
+        <img src="../assets/reseau3.jpg" alt="Photo de la page d'accueil">   
     </div>
       
 </div>

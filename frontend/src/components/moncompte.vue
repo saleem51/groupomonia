@@ -1,19 +1,19 @@
 <template>
     <div class="moncompte">
-        <h1>Groupamania</h1>
-        <h2>Votre compte</h2>
-        <div class="espace">
+        <router-link id="routhome" to="/Home">Groupomania</router-link>
+        <!--<h2>Votre compte</h2>
+         <div class="espace">
             <h3>Vos Informations personnelles</h3>
             <h4>Votre pseudo</h4>
-            <!--<p>{{username}}</p>-->
+            <p>{{username}}</p>
             <h4>Votre identifiant</h4>
             <p></p>
             <h4>Votre email</h4>
-            <!--<p>{{email}}</p>-->
+           <p>{{email}}</p>
             <h4> Votre status</h4>
             <p></p>
             <button  class="btn btn-danger"> Supprimer votre compte</button>
-        </div>
+        </div> -->
 
     </div>
     
@@ -63,7 +63,21 @@ methods:{
 
 <style lang="scss" scoped>
 
-h1{
+#routhome{
+  text-decoration: none;
+  font-size: 2.4em;
+  position: relative;
+  bottom: 65px;
+  font-weight: 500;
+  color: #FFF!important;
+  @media screen and (max-width:1024px){
+      font-size: 1.8em;
+      bottom: 85px;
+  }
+}
+
+
+/*h1{
     position: relative;
     bottom: 60px;
     color: #FFF;
@@ -73,18 +87,18 @@ h1{
         bottom:50px;
 
     }
-}
+}*/
 
-h2{
+/*h2{
     position: relative;
     bottom: 30px;
     @media screen and (max-width: 1024px) {
         font-size: 1.8em;
         bottom:30px;
     }
-}
+}*/
 
-.espace{
+/*.espace{
     border: 1px solid #000;
     border-radius: 10%;
     width: 50%;
@@ -106,6 +120,6 @@ p{
 
 button{
     margin-bottom: 10px;
-}
+}*/
 
 </style>

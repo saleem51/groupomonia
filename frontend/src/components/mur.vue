@@ -59,6 +59,20 @@ export default {
 #routhome{
   text-decoration: none;
   font-size: 2.4em;
+  position: relative;
+  bottom: 95px;
+  font-weight: 500;
+  color: #FFF!important;
+  @media screen and (max-width:1024px){
+      font-size: 1.8em;
+      bottom: 85px;
+  }
+}
+
+
+/*#routhome{
+  text-decoration: none;
+  font-size: 2.4em;
   font-weight: 500;
   position: relative;
   bottom: 140px;
@@ -68,7 +82,7 @@ export default {
       font-size: 1.8em;
       bottom: 85px;
   }
-}
+} 
 
 #deconec{
   position: relative;
@@ -80,7 +94,7 @@ export default {
 #title{
   position: relative;
   top: 15px;
-}
+}*/
 
 #submit{
 
