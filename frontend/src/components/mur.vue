@@ -1,19 +1,28 @@
 <template>
-    <div id="nav">
-      <router-link id="routhome" to="/Home">Groupomania</router-link>
-      <h3>Poster un message</h3>
+    <div id="mur">
+      <!-- <router-link id="routhome" to="/home">Groupomania</router-link> -->
+      <h3>Écriver votre message</h3>
+      <div class="btn-group dropleft">
+        <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          saleem51
+        </button>
+        <div class="dropdown-menu col-sm">
+          <p class="dropdown-item ">saleem51</p>
+          <div class="dropdown-divider"></div>
+          <router-link id="compte" to="/compte">Mon espace</router-link>
+        </div>
+      </div>
+     
       <form method="POST" class="from-group" @submit.prevent= "sendMessage" >
         <div class="form-group">
-          <label for="titre">
-            <textarea class="form-control" name="title" id="title" cols="100" rows="1" placeholder="titre du message" v-model= "title"></textarea>
-          </label>
           <label for="message">
-            <textarea  class="form-control" name="message" id="message" cols="100" rows="10" v-model= "message"></textarea>
+            <textarea  class="form-control" name="message" id="message" cols="50" rows="5" v-model= "message"></textarea>
           </label>
         </div>
         <button  type="submit" id="submit" class="btn btn-primary">Envoyer</button>
-      </form>
+      </form> 
     </div> 
+
 </template>
 
 <script>
@@ -56,18 +65,22 @@ export default {
 
 <style lang="scss" scoped>
 
-#routhome{
+h3{
+  margin-top: 20px;
+}
+
+/*#routhome{
   text-decoration: none;
   font-size: 2.4em;
   position: relative;
-  bottom: 95px;
+  bottom: 110px;
   font-weight: 500;
   color: #FFF!important;
   @media screen and (max-width:1024px){
       font-size: 1.8em;
       bottom: 85px;
   }
-}
+}*/
 
 
 /*#routhome{
@@ -101,6 +114,29 @@ export default {
 margin-bottom: 100px;
 
 }
-  
+
+.media{
+  width: 70%;
+  position: relative;
+  left: 150px;
+}
+
+.btn-group{
+  position: relative;
+  left:580px;
+  bottom: 110px;
+  @media screen and (min-width: 320px) and (max-width: 992px){
+    .btn-group{
+      left: 0;
+      bottom: 0;
+    }
+  }
+}
+
+#compte{
+  position: relative;
+  left: 15px;
+}
+
 
 </style>

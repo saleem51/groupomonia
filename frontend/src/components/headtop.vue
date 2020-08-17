@@ -2,6 +2,7 @@
   <div class="home" id="hom">
     <nav class="navbar navbar-expand-lg navbar-light bg-primary" id="navv">
       <img id="icon" alt="logo de l'entreprise" src="../assets/icon-left-font-monochrome-white.png">
+      <router-link id="routhome" to="/home">Groupomania</router-link>
     </nav>
   </div>
 </template>
@@ -17,6 +18,23 @@ export default{
 </script>
 
 <style lang="scss" scoped>
+
+#routhome{
+  text-decoration: none;
+  font-size: 2.4em;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  right: 60px;
+  text-align: center;
+  font-weight: 500;
+  color: #FFF!important;
+  @media screen and (max-width:1024px){
+      font-size: 1.8em;
+      right: 20px;
+  }
+}
+
 
 #navv{
   height: 70px;

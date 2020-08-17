@@ -1,7 +1,7 @@
 <template>
   <div id="from">
     <div id="nav">
-      <router-link id="routhome" to="/Home">Groupomania</router-link>
+      <!-- <router-link id="routhome" to="/Home">Groupomania</router-link> -->
       <h1>Inscription</h1>
     </div>
       <form method="POST"  @submit.prevent = "envoi">
@@ -105,12 +105,12 @@ export default {
 
 h1{
   position: relative;
-  bottom: 80px;
-  margin-bottom: 40px;
+  margin-bottom: 100px;
+  bottom: 30px;
   @media screen and (max-width: 1024px){
       bottom: 0px;
-      margin-top: 90px;
-     margin-bottom: 100px;
+      margin-top: 20px;
+     margin-bottom: 140px;
 
   }
 }
@@ -124,33 +124,33 @@ h1{
 }
 
 
-#routhome{
+/*#routhome{
   text-decoration: none;
   font-size: 2.4em;
   position: relative;
   font-weight: 500;
-  bottom: 95px;
-  color: #FFF!important;
+  bottom: 110px;
+  color: #FFF !important;
   @media screen and (max-width:1024px){
       font-size: 1.8em;
       bottom:85px
   }
-}
+}*/
 
 form{
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 
 .form-group{
   position: relative;
-  bottom: 120px;
+  bottom: 150px;
   margin-right: auto;
   margin-left: auto;
 }
 
 button{
   position: relative;
-  bottom: 75px;
+  bottom: 150px;
   
 }
 
@@ -171,6 +171,11 @@ button{
 li{
   list-style-type:  none;
   font-weight: bolder;
+}
+
+p{
+  position: relative;
+  bottom: 145px
 }
 </style>
 

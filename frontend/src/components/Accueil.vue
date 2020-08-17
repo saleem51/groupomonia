@@ -1,8 +1,8 @@
 <template>
 <div class="Home">
-    <h1>Groupomania</h1>
+    <!-- <router-link id="routhome" to="/home">Groupomania</router-link> -->
     <div class="img">
-        <img src="../assets/reseau3.jpg" alt="Photo de la page d'accueil">   
+         <img src="../assets/reseaud.jpg" alt="Photo de la page d'accueil">
     </div>
       
 </div>
@@ -19,15 +19,23 @@ export default {
 
 
 <style lang="scss" scoped>
-h1{
-    position: relative;
-    bottom: 60px;
-    color: #FFF;
+
+/*#routhome{
+  text-decoration: none;
+  font-size: 2.4em;
+  position: relative;
+  display: inline;
+  bottom: 80px;
+  font-weight: 500;
+  color: #FFF!important;
+  @media screen and (max-width:1024px){
+      font-size: 1.8em;
+      bottom: 70px;
+  }
+}*/
+
+.Home{
     display: inline;
-    @media screen and (max-width: 1024px){
-        font-size: 1.9em;
-        bottom: 50px;
-    }
 }
 
 img{

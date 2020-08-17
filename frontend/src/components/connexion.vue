@@ -1,7 +1,7 @@
 <template>
   <div id="from">
     <div id="nav">
-      <router-link id="routhome" to="/Home">Groupomania</router-link>
+      <!-- <router-link id="routhome" to="/Home">Groupomania</router-link> -->
       <h1>Connexion</h1>
     </div>
       <form method="POST" id="formulaire" @submit.prevent = "envoi">
@@ -16,7 +16,7 @@
           <small id="smallpass" class="text-danger"></small>
         </div>
         <button type="submit" class="btn btn-primary">Connexion</button>
-        <p>Pas encore inscrit ? <a href="/#/about">Inscrivez-vous</a></p>
+        <p>Pas encore inscrit ? <a href="/#/inscription">Inscrivez-vous</a></p>
       </form>
   </div> 
 </template>
@@ -78,8 +78,7 @@ export default {
 
 h1{
   position: relative;
-  bottom: 80px;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   @media screen and (max-width: 1024px){
       bottom: 0px;
       margin-top: 80px;
@@ -92,18 +91,18 @@ h1{
   padding-bottom: 100px;
 }
 
-#routhome{
+/*#routhome{
   text-decoration: none;
   font-size: 2.4em;
   position: relative;
-  bottom: 95px;
+  bottom: 110px;
   font-weight: 500;
-  color: #FFF!important;
+  color:#FFF!important;
   @media screen and (max-width:1024px){
       font-size: 1.8em;
       bottom: 85px;
   }
-}
+}*/
 
 form{
   padding-bottom: 100px;
@@ -119,6 +118,11 @@ form{
 button{
   position: relative;
   bottom: 80px;
+}
+
+p{
+  position: relative;
+  bottom: 60px;
 }
 
 </style>

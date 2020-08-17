@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-  <headtop></headtop>
-  <footbottom></footbottom>
-  <router-view/>
-    
+    <headtop></headtop>
+    <espace></espace>
+    <footbottom></footbottom>
+    <router-view/>
   </div>
 </template>
 <script>
 
-window.location.href = "http://localhost:8080/#/home";
+//window.location.href = "http://localhost:8080/#/home";
 
 import headtop from './components/headtop.vue'
+import espace from './components/espace.vue'
 import footbottom from './components/footbottom.vue'
 
 export default{
@@ -23,7 +24,8 @@ export default{
   },
   components: {
     'headtop' : headtop,
-    'footbottom': footbottom,
+    'espace'    : espace,
+    'footbottom': footbottom
   }
 
 }

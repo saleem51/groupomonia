@@ -1,8 +1,18 @@
 <template>
     <div class="moncompte">
-        <router-link id="routhome" to="/Home">Groupomania</router-link>
-        <!--<h2>Votre compte</h2>
-         <div class="espace">
+        <!-- <router-link id="routhome" to="/home">Groupomania</router-link> -->
+        <h2>Mon espace</h2>
+        <div class="btn-group dropleft">
+            <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            saleem51
+            </button>
+            <div class="dropdown-menu col-sm">
+                <p class="dropdown-item ">saleem51</p>
+                <div class="dropdown-divider"></div>
+                <router-link id="compte" to="/mur">Retour au mur</router-link>
+            </div>
+        </div>
+       
             <h3>Vos Informations personnelles</h3>
             <h4>Votre pseudo</h4>
             <p>{{username}}</p>
@@ -13,7 +23,7 @@
             <h4> Votre status</h4>
             <p></p>
             <button  class="btn btn-danger"> Supprimer votre compte</button>
-        </div> -->
+        
 
     </div>
     
@@ -63,7 +73,7 @@ methods:{
 
 <style lang="scss" scoped>
 
-#routhome{
+/*#routhome{
   text-decoration: none;
   font-size: 2.4em;
   position: relative;
@@ -72,9 +82,9 @@ methods:{
   color: #FFF!important;
   @media screen and (max-width:1024px){
       font-size: 1.8em;
-      bottom: 85px;
+      bottom: 55px;
   }
-}
+}*/
 
 
 /*h1{
@@ -89,16 +99,17 @@ methods:{
     }
 }*/
 
-/*h2{
+h2{
     position: relative;
-    bottom: 30px;
+    top: 20px;
+    margin-bottom: 50px;
     @media screen and (max-width: 1024px) {
         font-size: 1.8em;
         bottom:30px;
     }
-}*/
+}
 
-/*.espace{
+.espace{
     border: 1px solid #000;
     border-radius: 10%;
     width: 50%;
@@ -120,6 +131,34 @@ p{
 
 button{
     margin-bottom: 10px;
-}*/
+}
+
+#mur{
+  position: relative;
+  right: 560px;
+  color: #FFF;
+  display: block;
+  bottom: 60px;
+  
+}
+
+#mur:hover{
+
+    background-color: #FFF;
+    color: #000;
+    text-decoration: none;
+}
+
+.btn-group{
+  position: relative;
+  left:580px;
+  bottom: 160px;
+}
+
+#compte{
+  position: relative;
+  left: 15px;
+}
+
 
 </style>
