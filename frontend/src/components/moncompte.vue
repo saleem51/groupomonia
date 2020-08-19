@@ -1,28 +1,30 @@
 <template>
-    <div class="moncompte">
+    <div id="moncompte">
         <!-- <router-link id="routhome" to="/home">Groupomania</router-link> -->
         <h2>Mon espace</h2>
         <div class="btn-group dropleft">
             <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            saleem51
+            {{data.username}}
             </button>
             <div class="dropdown-menu col-sm">
-                <p class="dropdown-item ">saleem51</p>
+                <p class="dropdown-item ">{{data.username}}</p>
                 <div class="dropdown-divider"></div>
                 <router-link id="compte" to="/mur">Retour au mur</router-link>
+                <div class="dropdown-divider"></div>
+                <button  @click= "deco" id="deco">Se déconnecter</button>
             </div>
         </div>
        
             <h3>Vos Informations personnelles</h3>
             <h4>Votre pseudo</h4>
-            <p>{{username}}</p>
+            <p>{{data.username}}</p>
             <h4>Votre identifiant</h4>
-            <p></p>
+            <p>{{data.userId}}</p>
             <h4>Votre email</h4>
-           <p>{{email}}</p>
+           <p>{{data.email}}</p>
             <h4> Votre status</h4>
-            <p></p>
-            <button  class="btn btn-danger"> Supprimer votre compte</button>
+            <p>{{data.status}}</p>
+            <button @click= "deleteUser" class="btn btn-danger">Supprimer votre compte</button>
         
 
     </div>
@@ -39,31 +41,44 @@ export default {
     data(){
 
     return {
+        data:JSON.parse(this.$session.get('user')),
+        userId:""
     }
 },
 methods:{
 
     deleteUser : function () {
+        let token = this.data.token
         if(confirm('Voulez vous vraiment supprimer le compte ?'),confirm('Cette opération est irreversible !')){
-             axios.post('http://localhost:3000/api/deleteUser', {
-        
+             axios.post(`http://localhost:3000/api/deleteUser`, {
+                 userId: this.data.userId
         },
         {
           headers: {
             'Content-type': 'application/json',
+            'Authorization' : `Bearer ${token}`
             //x-www-form-urlencoded
               }
         })
        .then (() => { 
-                    window.location.href = "http://localhost:8080/#/home"
+                    this.$session.remove('user')
+                    document.getElementById('moncompte').style.display = 'none'
                     alert('votre compte a bien été supprimé !')
+                    window.location.href = "http://localhost:8080/#/home"
                     
        })
        .catch(() =>{
          console.log('Votre compte n\'a pas pu être supprimé !')
        }) 
         }
-    }
+    },
+
+         deco: function(){
+            if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
+              this.$session.remove('user');
+              window.location.href = "http://localhost:8080/#/home";
+            } 
+      }
 }
 
 
@@ -73,36 +88,10 @@ methods:{
 
 <style lang="scss" scoped>
 
-/*#routhome{
-  text-decoration: none;
-  font-size: 2.4em;
-  position: relative;
-  bottom: 65px;
-  font-weight: 500;
-  color: #FFF!important;
-  @media screen and (max-width:1024px){
-      font-size: 1.8em;
-      bottom: 55px;
-  }
-}*/
-
-
-/*h1{
-    position: relative;
-    bottom: 60px;
-    color: #FFF;
-    display: inline;
-    @media screen and (max-width: 1024px) {
-        font-size: 1.8em;
-        bottom:50px;
-
-    }
-}*/
-
 h2{
     position: relative;
     top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 5px;
     @media screen and (max-width: 1024px) {
         font-size: 1.8em;
         bottom:30px;
@@ -119,9 +108,8 @@ h2{
     
 }
 
-h3, h4, button {
-    margin-bottom: 5px;
-    margin-top: 5px;
+h3{
+    font-size: 1.6em;
 }
 
 p{
@@ -152,10 +140,10 @@ button{
 .btn-group{
   position: relative;
   left:580px;
-  bottom: 160px;
+  bottom: 101px;
 }
 
-#compte{
+#compte, #deco{
   position: relative;
   left: 15px;
 }

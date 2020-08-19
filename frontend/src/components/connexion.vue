@@ -26,6 +26,8 @@
 import axios from 'axios'
 
 
+
+
 export default {
     name: 'connexion',
     data(){
@@ -33,11 +35,13 @@ export default {
         username:"",
         password:"",
         
+        
+        
        }
     },
     methods:{
       envoi : function () {
-
+        let token = "";
         if(this.username == "" || this.password == ""){
           alert("Veuillez entrer votre email et votre mot de passe pour vous connecter")
         } else {
@@ -45,19 +49,25 @@ export default {
           axios.post('http://localhost:3000/api/login', {
           username: this.username,
           password: this.password,
+          
+          
         },
         {
           headers: {
             'Content-type': 'application/json',
+            'Authorization': `Bearer${token}`
             //x-www-form-urlencoded
               }
         })
-       .then ( () => { 
-                    
-                    console.log('Connexion réussi !')
+       .then ( (response) => { 
+                    let reponse = response.data;
+                    console.log('Connexion réussi !');
+                    let userObject = JSON.stringify(reponse);
+                    this.$session.set('user', userObject)
+                    let user = JSON.parse(this.$session.get('user'));
+                    token = user.token;
                    
                     window.location.href = "http://localhost:8080/#/mur"
-                    localStorage.setItem('username', this.username)
                     
        })
        .catch(() =>{
@@ -70,7 +80,8 @@ export default {
       },
       
       
-    } 
+    },
+axios
 }
 </script>
 
@@ -81,7 +92,7 @@ h1{
   margin-bottom: 100px;
   @media screen and (max-width: 1024px){
       bottom: 0px;
-      margin-top: 80px;
+      margin-top: 0px;
   }
 }
 

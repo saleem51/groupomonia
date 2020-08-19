@@ -64,7 +64,7 @@ exports.login = (req, res, next) => {
                   username: results[0].username,
                   email: results[0].email,
                   status: status,
-                  token: jwt.sign({ userId: results[0].id, role: status },TOKEN,{ expiresIn: '24h' })
+                  token: jwt.sign({ userId: results[0].id, status: status},TOKEN,{ expiresIn: '24h' })
                 })
                 
               }
@@ -80,11 +80,14 @@ exports.login = (req, res, next) => {
     }
   }
 
+  exports.getUser = (req, res, next) => {
+
+  }
+
 
   exports.deleteUser = (req, res, next) => {
     db.query(
-      `DELETE FROM user WHERE id=${req.params.id}`,
-      req.params.id,
+      `DELETE FROM user WHERE id=${req.body.userId}`,
       function (error) {
         if (error) {
           console.log('le compte n\'a pas été supprimé !')

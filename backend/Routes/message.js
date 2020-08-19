@@ -6,7 +6,7 @@ const auth = require('../middelware/auth')
 
 
 router.get('/createtable', messageCtlr.createmessageTable)
-router.post('/postmessage', auth, messageCtlr.postmessage);
+router.post('/postmessage', messageCtlr.postmessage);
 //router.get('/getmessage/:id', messageCtlr.getOneMessage);
 
 module.exports = router;

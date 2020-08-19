@@ -54,7 +54,7 @@ export default {
 @media screen and (min-width:810px) and (max-width:840px){
   .navbar-toggler{
     position: relative;
-    right: 50px;
+    right: 10px;
   }
 }
 

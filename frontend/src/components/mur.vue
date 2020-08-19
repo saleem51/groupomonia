@@ -1,15 +1,17 @@
 <template>
     <div id="mur">
-      <!-- <router-link id="routhome" to="/home">Groupomania</router-link> -->
-      <h3>Écriver votre message</h3>
+      <h2>Bienvenu {{data.username}} !</h2>
+      <h5>Écriver votre message</h5>
       <div class="btn-group dropleft">
         <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          saleem51
+         {{data.username}} 
         </button>
         <div class="dropdown-menu col-sm">
-          <p class="dropdown-item ">saleem51</p>
+          <p class="dropdown-item ">{{data.username}}</p>
           <div class="dropdown-divider"></div>
           <router-link id="compte" to="/compte">Mon espace</router-link>
+          <div class="dropdown-divider"></div>
+          <button  @click= "deco" id="deco" >Se déconnecter</button>
         </div>
       </div>
      
@@ -19,13 +21,15 @@
             <textarea  class="form-control" name="message" id="message" cols="50" rows="5" v-model= "message"></textarea>
           </label>
         </div>
-        <button  type="submit" id="submit" class="btn btn-primary">Envoyer</button>
+        <button  type="submit" id="envoi" class="btn btn-primary">Envoyer</button>
       </form> 
     </div> 
 
 </template>
 
 <script>
+
+
 
 import axios from 'axios'
 
@@ -34,19 +38,22 @@ export default {
     data() {
 
       return {
-        
+        data:JSON.parse(this.$session.get('user')),
         message:""
       }
     },
     methods: {
+
       sendMessage : function(){
+        //let token = this.data.token
         axios.post('http://localhost:3000/api/message/postmessage',
         {
-          message: this.message
+          message: this.message,
+          //token: this.data.token
         },{
           headers: {
             'Content-type': 'application/json',
-            //x-www-form-urlencoded
+            //'Authorization' : `Bearer ${token}`
               }
         })
         .then (() => { 
@@ -57,62 +64,46 @@ export default {
        .catch(() =>{
          console.log('le message n\'a pas été envoyé')
        }) 
+      },
+
+      deco: function(){
+            if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
+              this.$session.remove('user');
+              window.location.href = "http://localhost:8080/#/home";
+            } 
       }
 
     }
+
 }
 </script>
 
 <style lang="scss" scoped>
 
-h3{
+h2{
+  position: relative;
+  top: 30px;
+}
+
+h5{
   margin-top: 20px;
+  position: relative;
+  top: 70px;
 }
 
-/*#routhome{
-  text-decoration: none;
-  font-size: 2.4em;
+#message{
   position: relative;
-  bottom: 110px;
-  font-weight: 500;
-  color: #FFF!important;
-  @media screen and (max-width:1024px){
-      font-size: 1.8em;
-      bottom: 85px;
-  }
-}*/
-
-
-/*#routhome{
-  text-decoration: none;
-  font-size: 2.4em;
-  font-weight: 500;
-  position: relative;
-  bottom: 140px;
-  display: inline;
-  color:#FFF!important;
-  @media screen and (max-width:1024px){
-      font-size: 1.8em;
-      bottom: 85px;
-  }
-} 
-
-#deconec{
-  position: relative;
-  bottom: 80px;
-  left: 400px;
-  color: #FFF;
+  bottom: 100px;
 }
 
-#title{
+#envoi{
   position: relative;
-  top: 15px;
-}*/
+  top: 30px;
+}
 
-#submit{
-
-margin-bottom: 100px;
-
+.form-group{
+  position: relative;
+  top: 150px;
 }
 
 .media{
@@ -124,7 +115,7 @@ margin-bottom: 100px;
 .btn-group{
   position: relative;
   left:580px;
-  bottom: 110px;
+  bottom: 148px;
   @media screen and (min-width: 320px) and (max-width: 992px){
     .btn-group{
       left: 0;
@@ -133,9 +124,13 @@ margin-bottom: 100px;
   }
 }
 
-#compte{
+#compte, #deco{
   position: relative;
   left: 15px;
+}
+
+#deco{
+  text-decoration: none;
 }
 
 

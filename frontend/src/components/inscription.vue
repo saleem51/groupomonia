@@ -4,7 +4,7 @@
       <!-- <router-link id="routhome" to="/Home">Groupomania</router-link> -->
       <h1>Inscription</h1>
     </div>
-      <form method="POST"  @submit.prevent = "envoi">
+      <form method="POST" @submit.prevent = "envoi">
         <div class="form-group col-lg-3 col-sm-6">
           <label for="email">Votre email</label>
           <input type="email" class="form-control" name="" value="" id="email" pattern="[a-zâäàéèùêëîïôöçñA-Z0-9.-_]+[@]{1}[a-zA_Z0-9.-_]+[.]{1}[a-z]{2,4}" v-model="email">
@@ -57,7 +57,7 @@ export default {
     },
     methods:{
       envoi : function () {
-
+        let token = ""
         if (this.email == "" || this.username == "" || this.password == ""  ){
           alert('Veuillez remplir tous les champs avant d\'envoyer le formulaire !')
         }else if (this.password != this.password2){
@@ -71,11 +71,19 @@ export default {
         {
           headers: {
             'Content-type': 'application/json',
+            'Authorization': `Bearer${token}`
             //x-www-form-urlencoded
               }
         })
-       .then (() => {
+       .then ((response) => {
          console.log('Inscription réussi !')
+         let reponse = response.data;
+         let userObject = JSON.stringify(reponse);
+         this.$session.set('user', userObject)
+         let user = JSON.parse(this.$session.get('user'));
+         token = user.token;
+         alert('Félicitation vous êtes désormais inscrit, connectez-vous dès maintenant')
+         window.location.href = "http://localhost:8080/#/connexion"
          })
        .catch(() => console.log('Echec de l\'inscription')) 
         }
@@ -109,7 +117,7 @@ h1{
   bottom: 30px;
   @media screen and (max-width: 1024px){
       bottom: 0px;
-      margin-top: 20px;
+      margin-top: 0px;
      margin-bottom: 140px;
 
   }

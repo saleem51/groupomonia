@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const rateLimit = require('express-rate-limit');
 const dataCtlr = require('../Controllers/user');
+const auth = require('../middelware/auth');
 
 
 const createAccountLimiter = rateLimit ( { // limitation du nombre de création de comptes à partir de la même adress IP, limitation fixée à 5 mais modulables
@@ -14,10 +15,10 @@ const createAccountLimiter = rateLimit ( { // limitation du nombre de création 
   
 router.get('/createdb', dataCtlr.createDataBase);
 router.get('/createtables', dataCtlr.createDataTable);
-router.get('/getusers', dataCtlr.getUsers)
+router.get('/getusers', auth, dataCtlr.getUsers)
 router.post('/signup', createAccountLimiter, dataCtlr.signup)
 router.post('/login', dataCtlr.login)
-router.post('/deleteUser', dataCtlr.deleteUser)
+router.post('/deleteUser', auth , dataCtlr.deleteUser)
 
 
 

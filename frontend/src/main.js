@@ -6,12 +6,11 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap-scss'
+import VueSessionStorage from 'vue-sessionstorage'
 
 
 
-
-
-
+Vue.use(VueSessionStorage)
 Vue.use(Vuex)
 
 Vue.config.productionTip = false
