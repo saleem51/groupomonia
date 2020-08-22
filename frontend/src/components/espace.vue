@@ -1,5 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <nav id="navv" class="navbar navbar-expand-lg navbar-light bg-primary">
+ <!--<img id="icon" alt="logo de l'entreprise" src="../assets/icon-left-font-monochrome-white.png">-->
     <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,7 +11,7 @@
           <router-link class="dropdown-item" to="/home">Accueil</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="dropdown-item" to="/inscription">Inscription</router-link>
+          <router-link  class="dropdown-item" to="/inscription">Inscription</router-link>
         </li>
         <li class="nav-item">
           <router-link  class="dropdown-item" to="/connexion">Connexion</router-link>
@@ -28,7 +29,9 @@ export default {
     methods:{
       
       }
+      
       }
+  
 
 </script>
 
@@ -38,11 +41,10 @@ export default {
   color:#FFF;
 }
 
-
 @media (min-width:810px) {    
   .vertical-nav {
       position: fixed;
-      top: 56px;
+      top: 45px;
       left: 0;
       width: 155px;
       height: 100%;

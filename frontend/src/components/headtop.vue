@@ -1,16 +1,22 @@
 <template>
   <div class="home" id="hom">
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary" id="navv">
+   <nav class="navbar navbar-expand-lg navbar-light bg-primary" id="navv">
       <img id="icon" alt="logo de l'entreprise" src="../assets/icon-left-font-monochrome-white.png">
       <router-link id="routhome" to="/home">Groupomania</router-link>
-    </nav>
+      <buttondeco></buttondeco>
+   </nav>
   </div>
 </template>
 
 <script>
 
+import buttondeco from './buttondeco.vue'
+
 export default{
-  name: 'headtop'
+  name: 'headtop',
+  components:{
+    'buttondeco' : buttondeco
+  }
 
 }
 
@@ -47,6 +53,7 @@ export default{
 #icon{
  width: 10%;
 }
+
 #navbarDropdown{
   @media screen and (min-width: 1024px){
      color: #FFF;

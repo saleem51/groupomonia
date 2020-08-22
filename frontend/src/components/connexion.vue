@@ -66,8 +66,9 @@ export default {
                     this.$session.set('user', userObject)
                     let user = JSON.parse(this.$session.get('user'));
                     token = user.token;
-                   
-                    window.location.href = "http://localhost:8080/#/mur"
+                    window.location.href = "http://localhost:8080/#/mur";
+                    location.reload();
+                    
                     
        })
        .catch(() =>{
@@ -89,12 +90,18 @@ axios
 
 h1{
   position: relative;
-  margin-bottom: 100px;
+  //margin-bottom: 100px;
+  display: inline;
   @media screen and (max-width: 1024px){
       bottom: 0px;
       margin-top: 0px;
   }
 }
+
+#formulaire{
+  margin-top: 70px;
+}
+
 
 #from{
   height: 100%;

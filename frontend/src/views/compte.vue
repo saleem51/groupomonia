@@ -1,6 +1,7 @@
 <template>
   <div class="compte">
     <moncompte></moncompte>
+    <footbottom></footbottom>
   </div>
 </template>
 
@@ -8,6 +9,7 @@
 
 
 import moncompte from '../components/moncompte.vue'
+import footbottom from '../components/footbottom.vue'
 
 
 export default{
@@ -15,6 +17,7 @@ export default{
   components:{
     
     'moncompte' : moncompte,
+    'footbottom' : footbottom
    
   }
 }

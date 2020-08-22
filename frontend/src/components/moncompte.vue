@@ -1,32 +1,18 @@
 <template>
     <div id="moncompte">
-        <!-- <router-link id="routhome" to="/home">Groupomania</router-link> -->
         <h2>Mon espace</h2>
-        <div class="btn-group dropleft">
-            <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{data.username}}
-            </button>
-            <div class="dropdown-menu col-sm">
-                <p class="dropdown-item ">{{data.username}}</p>
-                <div class="dropdown-divider"></div>
-                <router-link id="compte" to="/mur">Retour au mur</router-link>
-                <div class="dropdown-divider"></div>
-                <button  @click= "deco" id="deco">Se déconnecter</button>
-            </div>
-        </div>
-       
+        <div class="layout">
             <h3>Vos Informations personnelles</h3>
-            <h4>Votre pseudo</h4>
-            <p>{{data.username}}</p>
+            <h4 id="pseudo">Votre pseudo</h4>
+            <p id="myname" class="allp"><span>{{data.username}}</span></p>
             <h4>Votre identifiant</h4>
-            <p>{{data.userId}}</p>
+            <p class="allp">{{data.userId}}</p>
             <h4>Votre email</h4>
-           <p>{{data.email}}</p>
+            <p class="allp">{{data.email}}</p>
             <h4> Votre status</h4>
-            <p>{{data.status}}</p>
+            <p class="allp" id="last">{{data.status}}</p>
             <button @click= "deleteUser" class="btn btn-danger">Supprimer votre compte</button>
-        
-
+        </div>
     </div>
     
 </template>
@@ -90,63 +76,94 @@ methods:{
 
 h2{
     position: relative;
-    top: 20px;
-    margin-bottom: 5px;
+    top: 5px;
+    margin-bottom: 10px;
     @media screen and (max-width: 1024px) {
         font-size: 1.8em;
         bottom:30px;
     }
 }
 
-.espace{
-    border: 1px solid #000;
-    border-radius: 10%;
+span{
+    text-transform: uppercase;
+}
+
+.layout{
+    border: 1px solid gray;
+    border-radius: 5%;
     width: 50%;
-    position: relative;
     margin-left: auto;
     margin-right: auto;
-    
+    background-color: rgb(235, 235, 235);
+    margin-bottom: 100px;
 }
 
 h3{
-    font-size: 1.6em;
+    font-size: 1.3em;
+    position: relative;
+    top: 10px;
+    @media screen  and (min-width: 300px) and (max-width:600px) {
+        font-size: .9em;
+    }
 }
 
 p{
-    font-size: 1.4em
+    font-size: 1.1em;
+    position: relative;
+    top: 10px;
+    @media screen  and (min-width: 300px) and (max-width:600px) {
+        font-size: .7em;
+    }
     
 }
 
+h4{
+    font-size: 1.2em;
+    position: relative;
+    top: 10px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    @media screen  and (min-width: 300px) and (max-width:600px) {
+        font-size: .8em;
+    }
+}
+
+#pseudo{
+position: relative;
+top: 30px;
+margin-bottom: 10px;
+}
+
+#myname{
+position: relative;
+top: 30px;
+margin-bottom: 40px;
+// border: 1px solid black;
+// width: 50%;
+// border-radius: 10%;
+// margin-left: auto;
+// margin-right: auto;
+}
+
+.allp{
+    border: 1px solid black;
+    width: 50%;
+    border-radius: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color:#000;
+    color: #FFF;
+}
+
+#last{
+    position: relative;
+    margin-bottom: 40px;
+}
 button{
     margin-bottom: 10px;
+     @media screen  and (min-width: 300px) and (max-width:600px) {
+        font-size: .8em;
+    }
 }
-
-#mur{
-  position: relative;
-  right: 560px;
-  color: #FFF;
-  display: block;
-  bottom: 60px;
-  
-}
-
-#mur:hover{
-
-    background-color: #FFF;
-    color: #000;
-    text-decoration: none;
-}
-
-.btn-group{
-  position: relative;
-  left:580px;
-  bottom: 101px;
-}
-
-#compte, #deco{
-  position: relative;
-  left: 15px;
-}
-
 
 </style>

@@ -21,7 +21,7 @@ app.use(express.json());
 
 
 app.use('/api/', dataRoute);
-app.use('/api/message/', messageRoute);
+app.use('/api/', messageRoute);
 
 
 module.exports = app;

@@ -2,7 +2,7 @@
   <div id="app">
     <headtop></headtop>
     <espace></espace>
-    <footbottom></footbottom>
+    <!--<footbottom></footbottom>-->
     <router-view/>
   </div>
 </template>
@@ -12,7 +12,7 @@
 
 import headtop from './components/headtop.vue'
 import espace from './components/espace.vue'
-import footbottom from './components/footbottom.vue'
+//import footbottom from './components/footbottom.vue'
 
 export default{
   name: 'App',
@@ -25,7 +25,7 @@ export default{
   components: {
     'headtop' : headtop,
     'espace'    : espace,
-    'footbottom': footbottom
+    //'footbottom': footbottom
   }
 
 }
@@ -39,7 +39,7 @@ export default{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #0e2c4b;
 }
 
 #nav {

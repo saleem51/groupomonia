@@ -20,12 +20,17 @@ export default {
 
 <style lang="scss" scoped>
 
-footer{
-    background-color: #742ea3;
-    position: fixed;
-    bottom: 0;
+.containerfooter{
+position: fixed;
+    bottom :0;
     width: 100%;
     height: 60px;
+}
+
+footer{
+    background-color: #742ea3;
+    
+    
     @media screen and (min-width: 320px) and (max-width: 830px) {
          
             position: fixed;

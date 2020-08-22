@@ -4,7 +4,6 @@
     <div class="img">
          <img src="../assets/reseaud.jpg" alt="Photo de la page d'accueil">
     </div>
-      
 </div>
     
 </template>
@@ -15,6 +14,12 @@
 
 export default {
     name: 'Accueil',
+    data(){
+
+    return {
+       
+    }
+},
 }
 
 </script>

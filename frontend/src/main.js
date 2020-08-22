@@ -7,9 +7,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap-scss'
 import VueSessionStorage from 'vue-sessionstorage'
+import jquery from 'jquery'
 
 
-
+Vue.use(jquery)
 Vue.use(VueSessionStorage)
 Vue.use(Vuex)
 
