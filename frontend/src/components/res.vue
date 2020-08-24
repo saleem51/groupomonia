@@ -7,7 +7,7 @@
           <p class="nameus">{{mess.username}}</p>  
           <p class="text">{{mess.message}}</p>
           <p class="datt">{{moment(mess.created_at).fromNow()}}</p>
-          <button  @click= "deletemess"  v-if="data.username == mess.username || data.status =='admin'" type="button" class="btn btn-danger btn-sm sup"><font-awesome-icon icon="trash"/></button> 
+          <button  getid @click= "deletemess"  v-if="data.username == mess.username" type="button" class="btn btn-danger btn-sm sup"><font-awesome-icon icon="trash"/></button> 
           <a  class="btn btn-info btn-circle text-uppercase bt" href="/#/res" id="reply"><span class="glyphicon glyphicon-share-alt"></span>Repondre</a>
           <a class="btn btn-warning btn-circle text-uppercase bt" data-toggle="collapse" href="#replyOne"><span class="glyphicon glyphicon-comment"></span>Commentaires</a>
         </div>
@@ -48,7 +48,6 @@ export default {
         msg:"",
         date:"",
         moment: moment,
-        
         
       }
     },

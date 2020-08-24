@@ -1,15 +1,15 @@
 <template>
 <div class="button">
-    <div v-if="data.username !== 'admin'" id="toggle" class="btn-group dropleft">
+    <div v-if="data.username == 'admin'" id="toggle" class="btn-group dropleft">
         <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span>{{data.username}}</span>
         </button>
         <div class="dropdown-menu col-sm">
             <p class="dropdown-item "><span>{{data.username}}</span></p>
             <div class="dropdown-divider"></div>
-            <router-link id="mur" to="/mur">Retour au mur</router-link>
+             <router-link id="mur" to="/mur">Retour au mur</router-link>
             <div class="dropdown-divider"></div>
-            <router-link id="compte" to="/compte">Mon espace</router-link>
+            <router-link id="admin" to="/dashadmin">DashBoard</router-link>
             <div class="dropdown-divider"></div>
             <button  @click= "deco" id="deco">Se déconnecter</button>
         </div>
@@ -42,10 +42,10 @@ methods:{
 
       togglebutton : function(){
 
-          if(this.data !== undefined){
+          if(this.data.status !== 'admin'){
               document.getElementById('toggle').style.display = 'none';
           }
-      }
+      },
 }
 
 }
@@ -86,7 +86,7 @@ button{
   }
 }
 
-#mur, #compte, #deco{
+#mur,#admin, #deco{
   position: relative;
   left: 15px;
 }

@@ -66,8 +66,15 @@ export default {
                     this.$session.set('user', userObject)
                     let user = JSON.parse(this.$session.get('user'));
                     token = user.token;
-                    window.location.href = "http://localhost:8080/#/mur";
-                    location.reload();
+                    if(user.status =='admin'){
+                      window.location.href = "http://localhost:8080/#/dashadmin"
+                      location.reload();
+                    }else{
+                      window.location.href = "http://localhost:8080/#/mur";
+                      location.reload();
+                    }
+                    
+                    
                     
                     
        })

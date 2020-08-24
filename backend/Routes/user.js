@@ -15,10 +15,10 @@ const createAccountLimiter = rateLimit ( { // limitation du nombre de création 
   
 router.get('/createdb', dataCtlr.createDataBase);
 router.get('/createtables', dataCtlr.createDataTable);
-router.get('/getusers', auth, dataCtlr.getUsers)
+router.get('/getusers', dataCtlr.getUsers)
 router.post('/signup', createAccountLimiter, dataCtlr.signup)
 router.post('/login', dataCtlr.login)
-router.post('/deleteUser', auth , dataCtlr.deleteUser)
+router.post('/deleteUser', dataCtlr.deleteUser)
 
 
 

@@ -1,27 +1,22 @@
 <template>
     <div class="mur">
-        <mur></mur>
-        <buttonadmin></buttonadmin>
+        <res></res>
         <footbottom></footbottom>
     </div>
 </template>
 
 <script>
 
-import mur from '../components/mur'
-import buttonadmin from '../components/buttonadmin.vue'
+import res from '../components/res.vue'
 import footbottom from '../components/footbottom.vue'
 
 export default {
     name: 'App',
   components:{
-    'mur' : mur,
-    'buttonadmin': buttonadmin,
+    'res' : res,
     'footbottom' : footbottom
   }
 }
-
-
 
 
 </script>

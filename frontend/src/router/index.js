@@ -55,6 +55,24 @@ Vue.use(VueRouter)
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/message.vue')
 
+  },
+  {
+    path: '/res',
+    name: 'res',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/res.vue')
+
+  },
+  {
+    path: '/dashadmin',
+    name: 'dashadmin',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/dashadmin.vue')
+
   }
 ]
 

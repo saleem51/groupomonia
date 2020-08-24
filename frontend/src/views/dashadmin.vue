@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <accueil></accueil>
+  <div class="dashadmin">
+    <dashadmin></dashadmin>
     <buttonadmin></buttonadmin>
     <footbottom></footbottom>
   </div>
@@ -9,17 +9,19 @@
 <script>
 
 
-import accueil from '../components/accueil.vue'
+import dashadmin from '../components/dashadmin.vue'
 import buttonadmin from '../components/buttonadmin.vue'
 import footbottom from '../components/footbottom.vue'
+
 
 export default{
   name: 'App',
   components:{
-    'accueil' : accueil,
+    
+    'dashadmin' : dashadmin,
     'buttonadmin': buttonadmin,
     'footbottom' : footbottom
-    
+   
   }
 }
 </script>
@@ -27,4 +29,3 @@ export default{
 <style lang="scss" scoped>
 
 </style>
-

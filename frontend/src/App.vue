@@ -2,7 +2,6 @@
   <div id="app">
     <headtop></headtop>
     <espace></espace>
-    <!--<footbottom></footbottom>-->
     <router-view/>
   </div>
 </template>
@@ -12,7 +11,7 @@
 
 import headtop from './components/headtop.vue'
 import espace from './components/espace.vue'
-//import footbottom from './components/footbottom.vue'
+
 
 export default{
   name: 'App',
@@ -25,7 +24,6 @@ export default{
   components: {
     'headtop' : headtop,
     'espace'    : espace,
-    //'footbottom': footbottom
   }
 
 }

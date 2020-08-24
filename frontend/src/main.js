@@ -7,10 +7,17 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap'
 import 'bootstrap-scss'
 import VueSessionStorage from 'vue-sessionstorage'
-import jquery from 'jquery'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faTrash)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 
-Vue.use(jquery)
+
+
 Vue.use(VueSessionStorage)
 Vue.use(Vuex)
 

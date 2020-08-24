@@ -80,11 +80,6 @@ exports.login = (req, res, next) => {
     }
   }
 
-  exports.getUser = (req, res, next) => {
-
-  }
-
-
   exports.deleteUser = (req, res, next) => {
     db.query(
       `DELETE FROM user WHERE id=${req.body.userId}`,
@@ -102,7 +97,7 @@ exports.login = (req, res, next) => {
 
   exports.getUsers = (req, res, next) => {
     db.query(
-      'SELECT id, username, isAdmin, email FROM user',
+      'SELECT id, username, isAdmin, email FROM user WHERE isAdmin=0',
       function (error, results) {
         if (error) {
           return res.status(400).json(error)
