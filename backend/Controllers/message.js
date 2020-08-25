@@ -50,31 +50,18 @@ exports.getMessages = (req, res, next) => {
 
 exports.getoneMessage = (req, res, next) => {
     
-  
+  db.query('SELECT * FROM msg WHERE idMESSAGES= ?',req.params.id, (error, result, field) => {
+    if (error) {
+      return res.status(400).json({ error})
+    }
+
+    return res.status(200).json(result)
+  })
   
 }
 exports.deleteMessage = (req, res, next) => {
-  db.query(
-    'SELECT * FROM msg WHERE idMESSAGES=?',
-    req.params.id,
-    console.log(req.params.id), (error, results, fields) => {
-      if (error) {
-        return res.status(400).json(error)
-      }
-      const token = req.headers.authorization.split(' ')[1]
-      console.log(token)
-      const decodedToken = jwt.verify(token, TOKEN)
-      const userId = decodedToken.userId
-      const status = decodedToken.status
-      const messageId = results[0].idUSERS
-      console.log(messageId)
-      if (userId !== messageId || status !== 'admin') {
-        return res.status(401).json({ message: 'Accès non autorisé' })
-      }
       db.query(
-        `DELETE FROM msg WHERE idMESSAGES=${req.params.id}`,
-        req.params.id,
-        function (error, results, fields) {
+        'DELETE FROM msg WHERE idMESSAGES= ?',req.body.id, (error, results, fields) => {
           if (error) {
             return res.status(400).json(error)
           }
@@ -82,5 +69,3 @@ exports.deleteMessage = (req, res, next) => {
         }
       )
     }
-  )
-}

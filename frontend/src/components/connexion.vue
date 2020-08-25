@@ -63,8 +63,8 @@ export default {
                     let reponse = response.data;
                     console.log('Connexion réussi !');
                     let userObject = JSON.stringify(reponse);
-                    this.$session.set('user', userObject)
-                    let user = JSON.parse(this.$session.get('user'));
+                    this.$localStorage.set('user', userObject)
+                    let user = JSON.parse(this.$localStorage.get('user'));
                     token = user.token;
                     if(user.status =='admin'){
                       window.location.href = "http://localhost:8080/#/dashadmin"

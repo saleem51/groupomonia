@@ -7,12 +7,11 @@
           <p class="nameus">{{mess.username}}</p>  
           <p class="text">{{mess.message}}</p>
           <p class="datt">{{moment(mess.created_at).fromNow()}}</p>
-          <button  @click= "deletemess"  v-if="data.username == mess.username || data.status =='admin'" type="button" class="btn btn-danger btn-sm sup"><font-awesome-icon icon="trash"/></button> 
-          <a  class="btn btn-info btn-circle text-uppercase bt" href="/#/res" id="reply"><span class="glyphicon glyphicon-share-alt"></span>Repondre</a>
+          <button  @click= "deletemess(mess.idMESSAGES)"  v-if="data.username == mess.username || data.status =='admin'" type="button" class="btn btn-danger btn-sm sup"><font-awesome-icon icon="trash"/></button> 
+          <button @click= "response(mess.idMESSAGES)" class="btn btn-info btn-circle text-uppercase bt" id="reply"><span class="glyphicon glyphicon-share-alt"></span>Repondre</button>
           <a class="btn btn-warning btn-circle text-uppercase bt" data-toggle="collapse" href="#replyOne"><span class="glyphicon glyphicon-comment"></span>Commentaires</a>
         </div>
       </div>
-
       <h5>Écriver votre message</h5>
       <form id="form" method="POST" class="from-group" @submit.prevent= "sendMessage" >
         <div class="form-group">
@@ -23,7 +22,6 @@
         <button  type="submit" id="envoi" class="btn btn-primary">Envoyer</button>
       </form> 
     </div> 
-
 </template>
 
 <script>
@@ -43,12 +41,13 @@ export default {
     data() {
 
       return {
-        data:JSON.parse(this.$session.get('user')),
+        data:JSON.parse(this.$localStorage.get('user')),
         message:"",
         msg:"",
         date:"",
         moment: moment,
-        
+        idmess:"",
+        reponse:""       
         
       }
     },
@@ -106,15 +105,16 @@ export default {
             } 
       },
 
-      deletemess: function(){
+      deletemess: function(delid){
         let token = this.data.token;
+        let idmess = delid
        
         if(confirm('êtes vous sûr de vouloir supprimer ce message ?') && confirm('cela effacera définitivement le message')){
 
           axios.post('http://localhost:3000/api/deletemessage',
           {
        
-            
+            id: idmess
            
           },
           {
@@ -137,6 +137,13 @@ export default {
         }
      
         },
+
+        response: function() {
+
+          
+          window.location.href = `http://localhost:8080/#/res`;
+        }
+      
 
     }
 }
@@ -169,7 +176,7 @@ span{
   border: 1px solid lightgray;
   width: 50%;
   line-height: 15px;
-  height:110px;
+  height:120px;
   position: relative;
   top: 70px;
   margin-right: auto;
@@ -265,11 +272,5 @@ h5{
   left: 570px;
   bottom: 10px;
 }
-
-#form2{
-  position: relative;
-  left: 100px;
-}
-
 
 </style>

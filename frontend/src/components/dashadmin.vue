@@ -19,7 +19,7 @@
                         <td class="user">{{users.username}}</td>
                         <td class="mail">{{users.email}}</td>
                         <td  class="num">{{users.id}}</td>
-                        <td class="sup"><button @click= "deleteusr(this.id)" class="btn btn-danger"><font-awesome-icon icon="trash"/></button></td>
+                        <td class="sup"><button @click= "deleteusr(users.id)" class="btn btn-danger"><font-awesome-icon icon="trash"/></button></td>
                     </tr>
                 </tbody>
             </table>
@@ -42,7 +42,7 @@
                         <td class="name">{{messages.username}}</td>
                         <td class="id">{{messages.idMESSAGES}}</td>
                         <td class="mess">{{messages.message}}</td>
-                        <td class="sup"><button @click= "deletemsg" class="btn btn-danger"><font-awesome-icon icon="trash"/></button></td>
+                        <td class="sup"><button @click= "deletemsg(messages.idMESSAGES)" class="btn btn-danger"><font-awesome-icon icon="trash"/></button></td>
                     </tr>
                 </tbody>
             </table>
@@ -61,10 +61,12 @@ export default {
     data(){
 
     return {
-        data:JSON.parse(this.$session.get('user')),
+        data:JSON.parse(this.$localStorage.get('user')),
         userId:"",
         usr:"",
         msg:"",
+        test:"",
+        deletid:""
        
     }
 },
@@ -93,20 +95,20 @@ methods:{
 
    deco: function(){
       if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
-        this.$session.remove('user');
+        this.$localStorage.remove('user');
         window.location.href = "http://localhost:8080/#/home";
       } 
     },
 
-    deleteusr: function(id) {
+    deleteusr: function(param) {
         let token = this.data.token
-       
+        let test = param
 
         if(confirm('Voulez vous vraiment supprimer le compte ?'),confirm('Cette opération est irreversible !')){
 
-           
              axios.post(`http://localhost:3000/api/deleteUser`, {
-                 userId:id
+
+                userId:test
         },
         {
           headers: {
@@ -115,11 +117,39 @@ methods:{
               }
         })
        .then (() => { 
-                    this.$session.remove('user')
-                    alert('le compte a bien été supprimé !')           
+                    
+                    alert('le compte a bien été supprimé !') 
+                    location.reload(true)      
        })
        .catch(() =>{
          console.log('le compte n\'a pas pu être supprimé !')
+       }) 
+        }
+    },
+    deletemsg: function(del) {
+        let token = this.data.token
+        let deletid = del
+
+        if(confirm('Voulez vous vraiment supprimer le message ?'),confirm('Cette opération est irreversible !')){
+
+             console.log(deletid)
+             axios.post(`http://localhost:3000/api/deletemessage`, {
+
+                id:deletid
+        },
+        {
+          headers: {
+            'Content-type': 'application/json',
+            'Authorization' : `Bearer ${token}`
+              }
+        })
+       .then (() => { 
+                    
+                    alert('le message a bien été supprimé !') 
+                    location.reload(true)      
+       })
+       .catch(() =>{
+         console.log('le message n\'a pas pu être supprimé !')
        }) 
         }
     }

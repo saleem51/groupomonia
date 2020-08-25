@@ -18,7 +18,7 @@ router.get('/createtables', dataCtlr.createDataTable);
 router.get('/getusers', dataCtlr.getUsers)
 router.post('/signup', createAccountLimiter, dataCtlr.signup)
 router.post('/login', dataCtlr.login)
-router.post('/deleteUser', dataCtlr.deleteUser)
+router.post('/deleteUser',auth, dataCtlr.deleteUser)
 
 
 

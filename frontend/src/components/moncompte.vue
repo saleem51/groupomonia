@@ -27,7 +27,7 @@ export default {
     data(){
 
     return {
-        data:JSON.parse(this.$session.get('user')),
+        data:JSON.parse(this.$localStorage.get('user')),
         userId:""
     }
 },
@@ -43,11 +43,10 @@ methods:{
           headers: {
             'Content-type': 'application/json',
             'Authorization' : `Bearer ${token}`
-            //x-www-form-urlencoded
               }
         })
        .then (() => { 
-                    this.$session.remove('user')
+                    this.$localStorage.remove('user')
                     document.getElementById('moncompte').style.display = 'none'
                     alert('votre compte a bien été supprimé !')
                     window.location.href = "http://localhost:8080/#/home"
@@ -61,7 +60,7 @@ methods:{
 
          deco: function(){
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
-              this.$session.remove('user');
+              this.$localStorage.remove('user');
               window.location.href = "http://localhost:8080/#/home";
             } 
       }
@@ -138,11 +137,6 @@ margin-bottom: 10px;
 position: relative;
 top: 30px;
 margin-bottom: 40px;
-// border: 1px solid black;
-// width: 50%;
-// border-radius: 10%;
-// margin-left: auto;
-// margin-right: auto;
 }
 
 .allp{
@@ -151,7 +145,7 @@ margin-bottom: 40px;
     border-radius: 10%;
     margin-left: auto;
     margin-right: auto;
-    background-color:#000;
+    background-color:rgb(66, 3, 107);
     color: #FFF;
 }
 

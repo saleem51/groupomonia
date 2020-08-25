@@ -27,14 +27,14 @@ export default {
     data(){
 
     return {
-        data:JSON.parse(this.$session.get('user')),
+        data:JSON.parse(this.$localStorage.get('user')),
         userId:""
     }
 },
 methods:{
          deco: function(){
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
-              this.$session.remove('user');
+              this.$localStorage.remove('user');
               window.location.href = "http://localhost:8080/#/home";
               location.reload(true);
             } 
@@ -69,22 +69,25 @@ button{
   top: 40px;
   @media screen and  (min-width: 320px) and (max-width:500px) {
       left:40%;
-      top: 90%;
+      top: 10%;
       z-index: 10;  
   }
    @media screen and  (min-width: 501px) and (max-width:768px) {
       left:45%;
-      top: 90%;
+      top: 7.5%;
       z-index: 10;
       
   }
-   @media screen and  (min-width: 769px) and (max-width:1025px) {
+   @media screen and  (min-width: 769px) and (max-width:992px) {
       left:47%;
-      top: 90%;
+      top: 20%;
       z-index: 10;
       
   }
-}
+
+      
+  }
+
 
 #mur,#admin, #deco{
   position: relative;

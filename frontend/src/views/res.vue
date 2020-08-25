@@ -7,6 +7,8 @@
 
 <script>
 
+console.log(this.$route.query.id);
+
 import res from '../components/res.vue'
 import footbottom from '../components/footbottom.vue'
 

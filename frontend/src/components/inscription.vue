@@ -79,8 +79,8 @@ export default {
          console.log('Inscription réussi !')
          let reponse = response.data;
          let userObject = JSON.stringify(reponse);
-         this.$session.set('user', userObject)
-         let user = JSON.parse(this.$session.get('user'));
+         this.$localStorage.set('user', userObject)
+         let user = JSON.parse(this.$localStorage.get('user'));
          token = user.token;
          alert('Félicitation vous êtes désormais inscrit, connectez-vous dès maintenant')
          window.location.href = "http://localhost:8080/#/connexion"

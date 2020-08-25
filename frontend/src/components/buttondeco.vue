@@ -1,6 +1,6 @@
 <template>
 <div class="button">
-    <div v-if="data.username !== 'admin'" id="toggle" class="btn-group dropleft">
+    <div v-if="data.username !== 'admin'"  id="toggle" class="btn-group dropleft">
         <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span>{{data.username}}</span>
         </button>
@@ -27,14 +27,14 @@ export default {
     data(){
 
     return {
-        data:JSON.parse(this.$session.get('user')),
+        data:JSON.parse(this.$localStorage.get('user')),
         userId:""
     }
 },
 methods:{
          deco: function(){
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
-              this.$session.remove('user');
+              this.$localStorage.remove('user');
               window.location.href = "http://localhost:8080/#/home";
               location.reload(true);
             } 

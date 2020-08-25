@@ -57,7 +57,7 @@ exports.login = (req, res, next) => {
                 if (results[0].isAdmin === 1) {
                   status = 'admin'
                 } else {
-                  status = 'member'
+                  status = 'membre'
                 }
                 res.status(200).json({
                   userId: results[0].id,
@@ -82,10 +82,9 @@ exports.login = (req, res, next) => {
 
   exports.deleteUser = (req, res, next) => {
     db.query(
-      `DELETE FROM user WHERE id=${req.body.userId}`,
-      function (error) {
+      'DELETE FROM user WHERE id= ?', req.body.userId, (error,result,field) => {
         if (error) {
-          console.log('le compte n\'a pas été supprimé !')
+          console.log(error)
           return res.status(400).json(error)
         }
         console.log('Le compte a bien été supprimé !')
