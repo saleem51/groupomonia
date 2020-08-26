@@ -9,7 +9,7 @@
           <p class="datt">{{moment(mess.created_at).fromNow()}}</p>
           <button  @click= "deletemess(mess.idMESSAGES)"  v-if="data.username == mess.username || data.status =='admin'" type="button" class="btn btn-danger btn-sm sup"><font-awesome-icon icon="trash"/></button> 
           <button @click= "response(mess.idMESSAGES)" class="btn btn-info btn-circle text-uppercase bt" id="reply"><span class="glyphicon glyphicon-share-alt"></span>Repondre</button>
-          <a class="btn btn-warning btn-circle text-uppercase bt" data-toggle="collapse" href="#replyOne"><span class="glyphicon glyphicon-comment"></span>Commentaires</a>
+          <a class="btn btn-warning btn-circle text-uppercase bt" data-toggle="collapse" href="#replyOne"><span class="glyphicon glyphicon-comment"></span>Voir les réponses</a>
         </div>
       </div>
       <h5>Écriver votre message</h5>
