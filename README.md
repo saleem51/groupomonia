@@ -28,7 +28,7 @@ cd Groupomania
 
 Connectez vous à mysql avec vos identifiants et mot de passe habituels, une fois connecté il faut créer la base de donnée Groupomania :
 
-commande sql : CREATE DATABASE Groupomnia;
+commande sql : CREATE DATABASE Groupomania;
 
 ensuite il faut créer une table user :
 
