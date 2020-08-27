@@ -10,7 +10,7 @@
 import message from '../components/message.vue'
 
 export default{
-  name: 'App',
+  name: 'messages',
   components:{
     'message' : message
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <accueil></accueil>
+    <Accueil></Accueil>>
     <buttonadmin></buttonadmin>
     <footbottom></footbottom>
   </div>
@@ -9,14 +9,15 @@
 <script>
 
 
-import accueil from '../components/accueil.vue'
+import Accueil from '../components/Accueil.vue'
 import buttonadmin from '../components/buttonadmin.vue'
 import footbottom from '../components/footbottom.vue'
 
 export default{
-  name: 'App',
+  name: 'Home',
+
   components:{
-    'accueil' : accueil,
+    'Accueil' : Accueil,
     'buttonadmin': buttonadmin,
     'footbottom' : footbottom
     

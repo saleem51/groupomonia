@@ -18,12 +18,12 @@ export default{
   data(){
 
       return {
-        idresponse:""
+        
     }
   },
   components: {
     'headtop' : headtop,
-    'espace'    : espace,
+    'espace'    : espace
   }
 
 }

@@ -12,7 +12,7 @@ import inscription from '../components/inscription.vue'
 import footbottom from '../components/footbottom.vue'
 
 export default{
-  name: 'App',
+  name: 'inscriptions',
   components:{
     'inscription' : inscription,
     'footbottom' : footbottom

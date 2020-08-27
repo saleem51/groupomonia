@@ -12,7 +12,7 @@ import connexion from '../components/connexion.vue'
 import footbottom from '../components/footbottom.vue'
 
 export default{
-  name: 'App',
+  name: 'connexions',
   components:{
     'connexion' : connexion,
     'footbotoom' : footbottom

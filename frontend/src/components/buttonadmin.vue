@@ -23,7 +23,7 @@
 
 
 export default {
-    name: 'buttondeco',
+    name: 'buttonadmin',
     data(){
 
     return {

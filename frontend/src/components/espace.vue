@@ -1,6 +1,5 @@
 <template>
   <nav id="navv" class="navbar navbar-expand-lg navbar-light bg-primary">
- <!--<img id="icon" alt="logo de l'entreprise" src="../assets/icon-left-font-monochrome-white.png">-->
     <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -25,7 +24,7 @@
 
 
 export default {
-    name: 'menu',
+    name: 'espaces',
     methods:{
       
       }

@@ -15,7 +15,7 @@ import footbottom from '../components/footbottom.vue'
 
 
 export default{
-  name: 'App',
+  name: 'dashadmins',
   components:{
     
     'dashadmin' : dashadmin,

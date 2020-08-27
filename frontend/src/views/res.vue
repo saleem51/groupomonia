@@ -13,7 +13,7 @@ import res from '../components/res.vue'
 import footbottom from '../components/footbottom.vue'
 
 export default {
-    name: 'App',
+    name: 'ress',
   components:{
     'res' : res,
     'footbottom' : footbottom

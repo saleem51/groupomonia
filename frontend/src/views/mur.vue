@@ -16,7 +16,7 @@ import footbottom from '../components/footbottom.vue'
 
 
 export default {
-    name: 'App',
+    name: 'murs',
   components:{
     'mur' : mur,
     'buttonadmin': buttonadmin,
