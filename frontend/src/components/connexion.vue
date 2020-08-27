@@ -1,7 +1,6 @@
 <template>
   <div id="from">
     <div id="nav">
-      <!-- <router-link id="routhome" to="/Home">Groupomania</router-link> -->
       <h1>Connexion</h1>
     </div>
       <form method="POST" id="formulaire" @submit.prevent = "envoi">
@@ -56,7 +55,6 @@ export default {
           headers: {
             'Content-type': 'application/json',
             'Authorization': `Bearer${token}`
-            //x-www-form-urlencoded
               }
         })
        .then ( (response) => { 

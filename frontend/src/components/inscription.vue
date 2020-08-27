@@ -72,7 +72,6 @@ export default {
           headers: {
             'Content-type': 'application/json',
             'Authorization': `Bearer${token}`
-            //x-www-form-urlencoded
               }
         })
        .then ((response) => {
@@ -83,7 +82,7 @@ export default {
          let user = JSON.parse(this.$localStorage.get('user'));
          token = user.token;
          alert('Félicitation vous êtes désormais inscrit, connectez-vous dès maintenant')
-         window.location.href = "http://localhost:8080/#/connexion"
+         window.location.href = "http://localhost:8080//#/connexion"
          })
        .catch(() => console.log('Echec de l\'inscription')) 
         }

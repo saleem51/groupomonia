@@ -138,11 +138,11 @@ export default {
      
         },
 
-        response: function() {
+        // response: function() {
 
           
-          window.location.href = `http://localhost:8080/#/res`;
-        }
+        //   window.location.href = 
+        // }
       
 
     }

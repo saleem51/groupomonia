@@ -8,9 +8,12 @@
 
 <script>
 
+
+
 import mur from '../components/mur'
 import buttonadmin from '../components/buttonadmin.vue'
 import footbottom from '../components/footbottom.vue'
+
 
 export default {
     name: 'App',

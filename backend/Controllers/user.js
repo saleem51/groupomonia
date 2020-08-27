@@ -4,6 +4,8 @@ const db = require('../mysqlconfig');
 const dotenv = require("dotenv");
 dotenv.config({path: './.env'}); 
 const TOKEN = process.env.TOKEN;
+const sha1 = require('sha1')
+let email;
 
 
 
@@ -28,6 +30,9 @@ exports.createDataTable = (req, res) => {
     
 exports.signup = (req, res, next) => {
     const user = req.body
+    email = user.email
+    let emailhash = sha1(email)
+    user.email = emailhash
      bcrypt.hash(user.password, 10) 
     .then((hash) => {
         user.password = hash
@@ -36,7 +41,7 @@ exports.signup = (req, res, next) => {
                 console.log(err)
                 return res.status(400).json("erreur")
             }
-            return res.status(201).json({message : 'Votre compte a bien été crée !'})
+            return res.status(201).json({message : 'Votre compte a bien été crée !'},)
         });
     });
 };  

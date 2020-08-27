@@ -22,8 +22,10 @@
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
+    "nodemon": "^2.0.4",
     "rand-token": "^1.0.1",
     "sequelize": "^6.3.4",
+    "sha1": "^1.1.1",
     "xss": "^1.0.8"
   }
 }
