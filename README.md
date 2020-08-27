@@ -75,18 +75,25 @@ Puis lancer la commande suivante :
     créer un fichier .env dans le dossier backend et le remplir de la manière suivante (ne pas ajouter de virgules ou de points virgule nulle part).
     
  
-   NAME = 'votre identifiant mysql'
+   NAME = 'DB-NOM'
 
-   PASS = 'votre mot de passe mysql'
+   PASS = 'DB-PASS'
 
    HOST = 'localhost'
 
   TOKEN = 'créer votre propre token  '
+  
+  
+  
+  
+  Installer ensuite nodemon : 
+
+2) npm install -g nodemon
 
 
 une fois toute ces étapes réalisés lancer la commande :
     
-    2)nodemon server (ou npx nodemon)
+    3)nodemon server (ou npx nodemon)
     
    
    
