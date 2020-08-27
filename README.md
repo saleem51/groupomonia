@@ -88,7 +88,7 @@ Puis lancer la commande suivante :
   
   Installer ensuite nodemon : 
 
-2) npm install -g nodemon
+       2)npm install -g nodemon
 
 
 une fois toute ces étapes réalisés lancer la commande :
