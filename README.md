@@ -88,8 +88,13 @@ une fois toute ces étapes réalisés lancer la commande :
     
     2)nodemon server (ou npx nodemon)
     
+   
+   
+Le serveur backend est à present fonctionnel 
+    
     
 #########################################
+
 
 
 * Frontend:
