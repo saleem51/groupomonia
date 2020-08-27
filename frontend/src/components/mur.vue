@@ -1,5 +1,6 @@
 <template>
     <div id="mur">
+      <img id="iconm" alt="logo de l'entreprise" src="../assets/iconpurple.svg">
       <h2>Bienvenu <span>{{data.username}} </span>!</h2>
       <div class="getMessag">
         <h3 id="mess">Les messages</h3>
@@ -151,6 +152,11 @@ export default {
 
 <style lang="scss" scoped>
 
+#mur{
+  position: relative;
+  bottom: 70px;
+}
+
 @media screen and (min-width: 300px) and (max-width: 992px){
     .btn-group{
       position: relative;
@@ -162,6 +168,10 @@ export default {
 h2{
   position: relative;
   top: 30px;
+  @media screen and (min-width: 300px) and (max-width: 992px){
+    top: 60px;
+  }
+
 }
 
 span{
@@ -186,13 +196,18 @@ span{
   margin-top: 10px;
   margin-bottom: 80px;
   @media screen and (min-width: 320px) and (max-width: 830px){
-
+    width: 95%;
+    height: 150px;
   }
 }
 
 #mess{
   position: relative;
   top: 50px;
+  @media screen and (min-width: 320px) and (max-width: 830px){
+    top: 70px;
+  }
+
 }
 
 .nameus{
@@ -271,6 +286,19 @@ h5{
   position: absolute;
   left: 570px;
   bottom: 10px;
+  @media screen and (min-width:320px) and (max-width: 500px){
+    position: relative;
+    left: 270px;
+    bottom: 40px;
+  }
 }
+
+#iconm{
+  width: 5%;
+  position: relative;
+  top: 80px;
+  right: 190px;
+}
+
 
 </style>

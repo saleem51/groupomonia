@@ -1,7 +1,7 @@
 <template>
   <div id="from">
     <div id="nav">
-      <!-- <router-link id="routhome" to="/Home">Groupomania</router-link> -->
+      <img id="iconp" alt="logo de l'entreprise" src="../assets/iconpurple.svg">
       <h1>Inscription</h1>
     </div>
       <form method="POST" @submit.prevent = "envoi">
@@ -113,9 +113,9 @@ export default {
 h1{
   position: relative;
   margin-bottom: 100px;
-  bottom: 30px;
+  bottom: 70px;
   @media screen and (max-width: 1024px){
-      bottom: 0px;
+      bottom: 40px;
       margin-top: 0px;
      margin-bottom: 140px;
 
@@ -130,34 +130,21 @@ h1{
   margin-right:auto;
 }
 
-
-/*#routhome{
-  text-decoration: none;
-  font-size: 2.4em;
-  position: relative;
-  font-weight: 500;
-  bottom: 110px;
-  color: #FFF !important;
-  @media screen and (max-width:1024px){
-      font-size: 1.8em;
-      bottom:85px
-  }
-}*/
-
 form{
   padding-bottom: 50px;
+
 }
 
 .form-group{
   position: relative;
-  bottom: 150px;
+  bottom: 195px;
   margin-right: auto;
   margin-left: auto;
 }
 
 button{
   position: relative;
-  bottom: 150px;
+  bottom: 200px;
   
 }
 
@@ -182,7 +169,26 @@ li{
 
 p{
   position: relative;
-  bottom: 145px
+  bottom: 190px
+}
+
+#iconp{
+  width: 5%;
+  position: relative;
+  bottom: 18px;
+  margin-right: 250px;
+  @media screen and (min-width: 320px) and (max-width: 500px){
+    bottom: 0px;
+    width: 12%;
+  }
+  @media screen and (min-width: 501px) and (max-width: 992px){
+    top: 0px;
+    width: 5%;
+  }
+  @media screen and (min-width: 993px) and (max-width: 1200px){
+    top: 7px;
+    width: 5%;
+  }
 }
 </style>
 

@@ -1,6 +1,7 @@
 <template>
   <div id="from">
     <div id="nav">
+      <img id="iconpc" alt="logo de l'entreprise" src="../assets/iconpurple.svg">
       <h1>Connexion</h1>
     </div>
       <form method="POST" id="formulaire" @submit.prevent = "envoi">
@@ -86,8 +87,7 @@ export default {
       },
       
       
-    },
-axios
+    }
 }
 </script>
 
@@ -95,7 +95,6 @@ axios
 
 h1{
   position: relative;
-  //margin-bottom: 100px;
   display: inline;
   @media screen and (max-width: 1024px){
       bottom: 0px;
@@ -107,25 +106,11 @@ h1{
   margin-top: 70px;
 }
 
-
 #from{
   height: 100%;
   margin-bottom: 200px;
   padding-bottom: 100px;
 }
-
-/*#routhome{
-  text-decoration: none;
-  font-size: 2.4em;
-  position: relative;
-  bottom: 110px;
-  font-weight: 500;
-  color:#FFF!important;
-  @media screen and (max-width:1024px){
-      font-size: 1.8em;
-      bottom: 85px;
-  }
-}*/
 
 form{
   padding-bottom: 100px;
@@ -148,5 +133,13 @@ p{
   bottom: 60px;
 }
 
-</style>
+#iconpc{
+  width: 5%;
+  position: relative;
+  bottom: 10px;
+  @media screen and (min-width: 320px) and (max-width: 500px){
+      width: 12%;
+  }
+}
 
+</style>
