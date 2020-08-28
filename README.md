@@ -130,6 +130,6 @@ et lancer la commande suivante :
  WHERE id = ‘(l’id du compte à transformer en admin)’;
 
 
-Par défaut le serveur client est accessible en local via le port 8080: http://localhost:8080/
+Par défaut le serveur client est accessible en local via le port 8080: http://localhost:8080/#/home
 
 Bonne navigation !
