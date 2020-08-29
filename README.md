@@ -49,7 +49,7 @@ ensuite il faut créer une table message :
 
 commande sql : 
 
-CREATE TABLE message (idMESSAGES int AUTO_INCREMENT,
+CREATE TABLE messages (idMESSAGES int AUTO_INCREMENT,
 `idUSERS` int NOT NULL,
  message text NOT NULL,
 `username` varchar(100) NOT NULL,
@@ -59,6 +59,21 @@ CREATE TABLE message (idMESSAGES int AUTO_INCREMENT,
  
  #########################################
  
+ et enfin il faut créer une table responses :
+ 
+ commande sql :
+ 
+ CREATE TABLE responses (idRESPONSE int AUTO_INCREMENT,
+ idMESSAGES int NOT NULL,
+ `idUSERS` int NOT NULL, 
+ response text NOT NULL,
+ `username` varchar(100) NOT NULL,
+ `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (idRESPONSE), 
+ FOREIGN KEY (`idUSERS`) REFERENCES `user` (`id`) ON DELETE CASCADE)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+ 
+ 
+ #########################################
  
  Une fois que la base de donnée Groupomania a été crée et que les tables user et message ont été crée, 
 
