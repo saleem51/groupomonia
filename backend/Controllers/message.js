@@ -1,9 +1,7 @@
 const db = require('../mysqlconfig');
-const jwt = require('jsonwebtoken');
-const mysql = require('mysql');
 const dotenv = require("dotenv");
 dotenv.config({path: './.env'}); 
-const TOKEN = process.env.TOKEN;
+
 
 
 
@@ -122,6 +120,18 @@ exports.deleteMessage = (req, res, next) => {
       db.query('SELECT * FROM responses  WHERE idMESSAGES= ?',req.params.id, (error, result, field) => {
         if (error) {
           return res.status(400).json({ error})
+        }
+  
+        return res.status(200).json(result)
+      })
+
+    }
+
+    exports.getAllResponses = (req, res, next) => {
+
+      db.query('SELECT * FROM responses  ORDER BY created_at DESC', (error, result, field) => {
+        if (error) {
+          return res.status(400).json( error)
         }
   
         return res.status(200).json(result)

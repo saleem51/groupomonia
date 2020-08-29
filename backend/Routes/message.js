@@ -14,5 +14,6 @@ router.post('/deletemessage',auth, messageCtlr.deleteMessage);
 router.post('/updatemessage',auth, messageCtlr.updateMessage);
 router.post('/responsemessage', messageCtlr.responseMessage);
 router.get('/getresponse/:id', messageCtlr.getResponse);
+router.get('/getallresponses' , messageCtlr.getAllResponses);
 
 module.exports = router;

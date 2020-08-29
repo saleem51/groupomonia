@@ -36,12 +36,35 @@
                         <th scope="col">Supprimer</th>
                     </tr>
                 </thead>
-                <tbody id="tbody" v-for="messages in msg" :key="messages.id">
+                <tbody id="tbody2" v-for="messages in msg" :key="messages.id">
                     <tr class="color">
                         <td class="vide2"></td>
                         <td class="name">{{messages.username}}</td>
                         <td class="id">{{messages.idMESSAGES}}</td>
                         <td class="mess">{{messages.message}}</td>
+                        <td class="sup"><button @click= "deletemsg(messages.idMESSAGES)" class="btn btn-danger"><font-awesome-icon icon="trash"/></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class=messages>
+        <h3>Réponses postées</h3>
+         <table class="table table-bordered  table-sm" id='table3'>
+                <thead id="thead">
+                    <tr class="color">
+                        <th scope="col"></th>
+                        <th scope="col">user</th>
+                        <th scope="col">message n°</th>
+                        <th scope="col">contenu</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody3" v-for="responses in res" :key="responses.id">
+                    <tr class="color">
+                        <td class="vide2"></td>
+                        <td class="name">{{responses.username}}</td>
+                        <td class="id">{{responses.idMESSAGES}}</td>
+                        <td class="mess">{{responses.response}}</td>
                         <td class="sup"><button @click= "deletemsg(messages.idMESSAGES)" class="btn btn-danger"><font-awesome-icon icon="trash"/></button></td>
                     </tr>
                 </tbody>
@@ -66,7 +89,8 @@ export default {
         usr:"",
         msg:"",
         test:"",
-        deletid:""
+        deletid:"",
+        res:""
        
     }
 },
@@ -89,6 +113,14 @@ export default {
         })
         .catch(error => console.log(error))
 
+        axios.get('http://localhost:3000/api/getallresponses')
+        .then(response => {
+          console.log(response.data)
+          this.res = response.data
+        
+         
+        })
+        .catch(error => console.log(error))
 
     },
 methods:{
@@ -241,12 +273,8 @@ margin-left: 10%;
 width: 5%;
 }
 
-#table{
+#table, #table2, #table3{
     background-color:#6902ad; 
-}
-
-#table2{
-    background-color:#6902ad;
 }
 
 </style>

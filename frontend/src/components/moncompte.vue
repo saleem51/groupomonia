@@ -11,7 +11,8 @@
             <p class="allp">{{data.email}}</p>
             <h4> Votre status</h4>
             <p class="allp" id="last">{{data.status}}</p>
-            <button @click= "deleteUser" class="btn btn-danger">Supprimer votre compte</button>
+            <button @click= "updateuser" class="btn btn-success suc">Modifer vos information</button>
+            <button @click= "deleteUser" class="btn btn-danger sup">Supprimer votre compte</button>
         </div>
     </div>
     
@@ -28,7 +29,7 @@ export default {
 
     return {
         data:JSON.parse(this.$localStorage.get('user')),
-        userId:""
+        userId:"",
     }
 },
 methods:{
@@ -63,6 +64,16 @@ methods:{
               this.$localStorage.remove('user');
               window.location.href = " http://localhost:8080/#/home";
             } 
+      },
+
+      updateuser : function() {
+
+          let iduser = this.data.userId
+
+         window.location.href = `http://localhost:8080/#/reponses?id=${iduser}`
+         location.reload(true);
+
+
       }
 }
 
@@ -114,6 +125,10 @@ p{
         font-size: .7em;
     }
     
+}
+
+.suc{
+    margin-right: 10px;
 }
 
 h4{

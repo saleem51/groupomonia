@@ -30,9 +30,9 @@ exports.createDataTable = (req, res) => {
     
 exports.signup = (req, res, next) => {
     const user = req.body
-    email = user.email
-    let emailhash = sha1(email)
-    user.email = emailhash
+    // email = user.email
+    // let emailhash = sha1(email)
+    // user.email = emailhash
      bcrypt.hash(user.password, 10) 
     .then((hash) => {
         user.password = hash
