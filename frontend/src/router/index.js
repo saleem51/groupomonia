@@ -2,7 +2,6 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 
-
 Vue.use(VueRouter)
 
   const routes = [
@@ -21,7 +20,7 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "about" */ '../views/inscription.vue')
   },
   {
-    path: '/Home',
+    path: '/', 
     name: 'Home',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -30,12 +29,23 @@ Vue.use(VueRouter)
 
   },
   {
+    path: '/home', 
+    name: 'Home',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Home.vue')
+
+  }
+  ,
+  {
     path: '/mur',
     name: 'mur',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/mur.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/mur.vue'),
+   
 
   },
   {
@@ -48,12 +58,12 @@ Vue.use(VueRouter)
 
   },
   {
-    path: '/message',
-    name: 'message',
+    path: '/reponses',
+    name: 'reponses',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/message.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/reponses.vue')
 
   },
   {
@@ -73,8 +83,20 @@ Vue.use(VueRouter)
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/dashadmin.vue')
 
+  },
+  {
+    path: '/viewresp',
+    name: 'viewresp',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/viewresp.vue')
+
   }
 ]
+
+
+
 
 const router = new VueRouter({
   routes

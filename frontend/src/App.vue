@@ -2,12 +2,12 @@
   <div id="app">
     <headtop></headtop>
     <espace></espace>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 <script>
 
-//window.location.href = "http://localhost:8080/#/home";
+
 
 import headtop from './components/headtop.vue'
 import espace from './components/espace.vue'

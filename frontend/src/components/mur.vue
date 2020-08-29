@@ -8,13 +8,14 @@
           <p class="nameus">{{mess.username}}</p>  
           <p class="text">{{mess.message}}</p>
           <p class="datt">{{moment(mess.created_at).fromNow()}}</p>
+          <button @click= "updatemess(mess.idMESSAGES)" v-if="data.username == mess.username || data.status =='admin'" type="button" class="btn btn-success btn-sm mod">modifier</button>
           <button  @click= "deletemess(mess.idMESSAGES)"  v-if="data.username == mess.username || data.status =='admin'" type="button" class="btn btn-danger btn-sm sup"><font-awesome-icon icon="trash"/></button> 
           <button @click= "response(mess.idMESSAGES)" class="btn btn-info btn-circle text-uppercase bt" id="reply"><span class="glyphicon glyphicon-share-alt"></span>Repondre</button>
-          <a class="btn btn-warning btn-circle text-uppercase bt" data-toggle="collapse" href="#replyOne"><span class="glyphicon glyphicon-comment"></span>Voir les réponses</a>
+          <button @click= "view(mess.idMESSAGES)" class="btn btn-warning btn-circle text-uppercase bt" data-toggle="collapse" href="#/viewresponse"><span class="glyphicon glyphicon-comment"></span>Voir les réponses</button>
         </div>
       </div>
       <h5>Écriver votre message</h5>
-      <form id="form" method="POST" class="from-group" @submit.prevent= "sendMessage" >
+      <form id="formtog" method="POST" class="from-group" @submit.prevent= "sendMessage" >
         <div class="form-group">
           <label for="message">
             <textarea  class="form-control" name="message" id="message" cols="50" rows="5" v-model= "message"></textarea>
@@ -47,8 +48,8 @@ export default {
         msg:"",
         date:"",
         moment: moment,
-        idmess:"",
-        reponse:""       
+        imess:"",
+        update:""      
         
       }
     },
@@ -139,23 +140,37 @@ export default {
      
         },
 
-        // response: function() {
+       updatemess: function (idmess) {
+         
+         let imess = idmess
 
-          
-        //   window.location.href = 
-        // }
-      
+         window.location.href = `http://localhost:8080/#/res?id=${imess}`
+         location.reload(true);
 
+       },
+
+      response: function (idmess){
+
+        let irep = idmess
+
+         window.location.href = `http://localhost:8080/#/reponses?id=${irep}`
+         location.reload(true);
+
+
+      },
+
+      view : function (idmess) {
+        let iview = idmess
+
+         window.location.href = `http://localhost:8080/#/viewresp?id=${iview}`
+         location.reload(true);
+      }
     }
 }
 </script>
 
 <style lang="scss" scoped>
 
-// #mur{
-//   position: relative;
-//   bottom: 70px;
-// }
 
 @media screen and (min-width: 300px) and (max-width: 992px){
     .btn-group{
@@ -288,12 +303,10 @@ h5{
   }
 }
 
-// #iconm{
-//   width: 5%;
-//   position: relative;
-//   top: 80px;
-//   right: 190px;
-// }
-
+.mod{
+  position: relative;
+  bottom: 50px;
+  right: 120px;
+}
 
 </style>

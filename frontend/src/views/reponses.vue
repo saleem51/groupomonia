@@ -1,18 +1,18 @@
 <template>
   <div class="message">
-    <message></message>
+    <reponse></reponse>
   </div>
 </template>
 
 <script>
 
 
-import message from '../components/message.vue'
+import reponse from '../components/reponse.vue'
 
 export default{
-  name: 'messages',
+  name: 'reponses',
   components:{
-    'message' : message
+    'reponse' : reponse
   }
 }
 </script>
