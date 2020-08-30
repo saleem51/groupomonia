@@ -9,7 +9,7 @@
                     <p class="datt">{{moment(mess.created_at).fromNow()}}</p>
                 </div>
             </div>
-            <h3>Les réponse</h3>
+            <h3>Les réponses</h3>
             <div  class="getrespon">
                 <div id="resdiv" class="rsp"  v-for="views in view" :key="views.idRESPONSE">
                     <p class="nameus">{{views.username}}</p>  
@@ -122,7 +122,7 @@ span{
   position: relative;
   top: 20px;
   margin-right: auto;
-  background-color:#5882cf;
+  background-color:#21971d;
   border-radius: 5px;
   margin-left: auto;
   margin-top: 10px;

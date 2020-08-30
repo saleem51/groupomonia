@@ -1,18 +1,20 @@
 <template>
-    <div id="moncompte">
+    <div id="moncompte" >
         <h2>Mon espace</h2>
         <div class="layout">
             <h3>Vos Informations personnelles</h3>
             <h4 id="pseudo">Votre pseudo</h4>
-            <p id="myname" class="allp"><span>{{data.username}}</span></p>
-            <h4>Votre identifiant</h4>
-            <p class="allp">{{data.userId}}</p>
-            <h4>Votre email</h4>
-            <p class="allp">{{data.email}}</p>
-            <h4> Votre status</h4>
-            <p class="allp" id="last">{{data.status}}</p>
-            <button @click= "updateuser" class="btn btn-success suc">Modifer vos information</button>
-            <button @click= "deleteUser" class="btn btn-danger sup">Supprimer votre compte</button>
+            <div classe=info  v-for="usr in user" :key="usr.userId">
+                <p id="myname" class="allp"><span>{{usr.username}}</span></p>
+                <h4>Votre identifiant</h4>
+                <p class="allp">{{data.userId}}</p>
+                <h4>Votre email</h4>
+                <p class="allp">{{usr.email}}</p>
+                <h4> Votre status</h4>
+                <p class="allp" id="last">{{data.status}}</p>
+                <button @click= "updateuser" class="btn btn-success suc">Modifer vos information</button>
+                <button @click= "deleteUser" class="btn btn-danger sup">Supprimer votre compte</button>
+            </div>   
         </div>
     </div>
     
@@ -30,7 +32,20 @@ export default {
     return {
         data:JSON.parse(this.$localStorage.get('user')),
         userId:"",
+        user:""
     }
+},
+mounted(){
+    let data = JSON.parse(this.$localStorage.get('user'))
+     axios.get(`http://localhost:3000/api/getoneuser/${data.userId}`)
+        .then(response => {
+          console.log(response.data)
+          this.user = response.data
+        
+         
+        })
+        .catch(error => console.log(error)) 
+
 },
 methods:{
 
@@ -63,6 +78,7 @@ methods:{
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$localStorage.remove('user');
               window.location.href = " http://localhost:8080/#/home";
+              location.reload(true);
             } 
       },
 
@@ -70,7 +86,7 @@ methods:{
 
           let iduser = this.data.userId
 
-         window.location.href = `http://localhost:8080/#/reponses?id=${iduser}`
+         window.location.href = `http://localhost:8080/#/updateuser?id=${iduser}`
          location.reload(true);
 
 

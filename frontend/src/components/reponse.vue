@@ -28,7 +28,7 @@ import axios from 'axios'
 
 let url = document.location.href;
 let idme = url.substring(36, 39);
-console.log(idme)
+
 
 let moment = require('moment')
 moment.locale('fr');
