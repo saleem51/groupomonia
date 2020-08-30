@@ -66,10 +66,10 @@ export default {
                     let user = JSON.parse(this.$localStorage.get('user'));
                     token = user.token;
                     if(user.status =='admin'){
-                      window.location.href = "http://localhost:8080/#/dashadmin"
+                      window.location.href = "http://localhost:8080//#/dashadmin"
                       location.reload(true);
                     }else{
-                      window.location.href = "http://localhost:8080/#/mur";
+                      window.location.href = "http://localhost:8080//#/mur";
                       location.reload(true);
                     }
                     

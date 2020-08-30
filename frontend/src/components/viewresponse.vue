@@ -26,7 +26,7 @@
 import axios from 'axios'
 
 let url = document.location.href;
-let idme = url.substring(36, 39);
+let idme = url.substring(37, 40);
 console.log(idme)
 
 let moment = require('moment')

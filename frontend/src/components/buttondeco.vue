@@ -1,11 +1,12 @@
 <template>
 <div class="button">
     <div v-if="data.username !== 'admin'"  id="toggle" class="btn-group dropleft">
+        <div v-for="usr in user" :key="usr.userId">
         <button type="button" class="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span>{{data.username}}</span>
+        <span>{{usr.username}}</span>
         </button>
         <div class="dropdown-menu col-sm">
-            <p class="dropdown-item "><span>{{data.username}}</span></p>
+            <p class="dropdown-item "><span>{{usr.username}}</span></p>
             <div class="dropdown-divider"></div>
             <router-link id="mur" to="/mur">Retour au mur</router-link>
             <div class="dropdown-divider"></div>
@@ -13,6 +14,7 @@
             <div class="dropdown-divider"></div>
             <button  @click= "deco" id="deco">Se déconnecter</button>
         </div>
+        </div> 
     </div>
 </div>
     
@@ -20,7 +22,7 @@
 
 <script>
 
-
+import axios from 'axios'
 
 export default {
     name: 'buttondeco',
@@ -28,14 +30,28 @@ export default {
 
     return {
         data:JSON.parse(this.$localStorage.get('user')),
-        userId:""
+        userId:"",
+        user:""
     }
+},
+mounted(){
+
+     let data = JSON.parse(this.$localStorage.get('user'))
+     axios.get(`http://localhost:3000/api/getoneuser/${data.userId}`)
+        .then(response => {
+          console.log(response.data)
+          this.user = response.data
+        
+         
+        })
+        .catch(error => console.log(error)) 
+
 },
 methods:{
          deco: function(){
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$localStorage.remove('user');
-              window.location.href = "http://localhost:8080/#/home";
+              window.location.href = "http://localhost:8080//#/home";
               location.reload(true);
             } 
       },

@@ -20,7 +20,7 @@ router.get('/getoneuser/:id', dataCtlr.getOneUser)
 router.post('/signup', createAccountLimiter, dataCtlr.signup);
 router.post('/login', dataCtlr.login);
 router.post('/deleteUser',auth, dataCtlr.deleteUser);
-router.post('/updateuser/:id',auth, dataCtlr.updateUser);
+router.post('/updateuser/:id', dataCtlr.updateUser);
 
 
 

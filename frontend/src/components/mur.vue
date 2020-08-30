@@ -103,7 +103,7 @@ export default {
       deco: function(){
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$session.remove('user');
-              window.location.href = "http://localhost:8080/#/home";
+              window.location.href = "http://localhost:8080//#/home";
             } 
       },
 
@@ -144,7 +144,7 @@ export default {
          
          let imess = idmess
 
-         window.location.href = `http://localhost:8080/#/res?id=${imess}`
+         window.location.href = `http://localhost:8080//#/res?id=${imess}`
          location.reload(true);
 
        },
@@ -153,7 +153,7 @@ export default {
 
         let irep = idmess
 
-         window.location.href = `http://localhost:8080/#/reponses?id=${irep}`
+         window.location.href = `http://localhost:8080//#/reponses?id=${irep}`
          location.reload(true);
 
 
@@ -162,7 +162,7 @@ export default {
       view : function (idmess) {
         let iview = idmess
 
-         window.location.href = `http://localhost:8080/#/viewresp?id=${iview}`
+         window.location.href = `http://localhost:8080//#/viewresp?id=${iview}`
          location.reload(true);
       }
     }

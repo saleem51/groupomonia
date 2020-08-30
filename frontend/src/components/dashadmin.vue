@@ -63,9 +63,9 @@
                     <tr class="color">
                         <td class="vide2"></td>
                         <td class="name">{{responses.username}}</td>
-                        <td class="id">{{responses.idMESSAGES}}</td>
+                        <td class="id">{{responses.idRESPONSE}}</td>
                         <td class="mess">{{responses.response}}</td>
-                        <td class="sup"><button @click= "deletemsg(messages.idMESSAGES)" class="btn btn-danger"><font-awesome-icon icon="trash"/></button></td>
+                        <td class="sup"><button @click= "deleteresp(responses.idRESPONSE)" class="btn btn-danger"><font-awesome-icon icon="trash"/></button></td>
                     </tr>
                 </tbody>
             </table>
@@ -128,7 +128,7 @@ methods:{
    deco: function(){
       if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
         this.$localStorage.remove('user');
-        window.location.href = "http://localhost:8080/#/home";
+        window.location.href = "http://localhost:8080//#/home";
       } 
     },
 
@@ -184,13 +184,37 @@ methods:{
          console.log('le message n\'a pas pu être supprimé !')
        }) 
         }
+    },
+      deleteresp: function(resp) {
+        let token = this.data.token
+        let deletid = resp
+
+        if(confirm('Voulez vous vraiment supprimer le message ?'),confirm('Cette opération est irreversible !')){
+
+             console.log(deletid)
+             axios.post(`http://localhost:3000/api/deleteresponse`, {
+
+                id:deletid
+        },
+        {
+          headers: {
+            'Content-type': 'application/json',
+            'Authorization' : `Bearer ${token}`
+              }
+        })
+       .then (() => { 
+                    
+                    alert('le message a bien été supprimé !') 
+                    location.reload(true)      
+       })
+       .catch(() =>{
+         console.log('le message n\'a pas pu être supprimé !')
+       }) 
+        }
     }
-
 }
 
-
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -273,8 +297,16 @@ margin-left: 10%;
 width: 5%;
 }
 
-#table, #table2, #table3{
+#table{
+    background-color:rgb(82, 81, 81) ;
+}
+
+#table2{
     background-color:#6902ad; 
+}
+
+#table3{
+    background-color: #21971d;
 }
 
 </style>

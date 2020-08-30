@@ -27,7 +27,7 @@
 import axios from 'axios'
 
 let url = document.location.href;
-let idme = url.substring(36, 39);
+let idme = url.substring(37, 40);
 
 
 let moment = require('moment')
@@ -64,7 +64,7 @@ export default {
         deco: function(){
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$session.remove('user');
-              window.location.href = "http://localhost:8080/#/home";
+              window.location.href = "http://localhost:8080//#/home";
             } 
       },
 
@@ -95,7 +95,7 @@ export default {
                     console.log('réponse envoyé')
                     this.message ==="";
                     alert('votre reponse a bien été envoyé !')
-                    window.location.href = "http://localhost:8080/#/mur"
+                    window.location.href = `http://localhost:8080//#/viewresp?id=${idme}`
 
                     
        })

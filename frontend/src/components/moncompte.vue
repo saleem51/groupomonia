@@ -77,7 +77,7 @@ methods:{
          deco: function(){
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$localStorage.remove('user');
-              window.location.href = " http://localhost:8080/#/home";
+              window.location.href = " http://localhost:8080//#/home";
               location.reload(true);
             } 
       },
@@ -86,7 +86,7 @@ methods:{
 
           let iduser = this.data.userId
 
-         window.location.href = `http://localhost:8080/#/updateuser?id=${iduser}`
+         window.location.href = `http://localhost:8080//#/updateuser?id=${iduser}`
          location.reload(true);
 
 

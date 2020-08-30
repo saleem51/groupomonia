@@ -42,7 +42,7 @@
 <script>
 
 let url = document.location.href;
-let id = url.substring(38, 41);
+let id = url.substring(39, 42);
 
 
 
@@ -93,7 +93,7 @@ export default {
        deco: function(){
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$localStorage.remove('user');
-              window.location.href = " http://localhost:8080/#/home";
+              window.location.href = " http://localhost:8080//#/home";
             }
     },
      showdiv: function() {
