@@ -45,7 +45,7 @@ UNIQUE KEY username_UNIQUE (username))ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CH
 
 #########################################
 
-ensuite il faut créer une table message :
+ensuite il faut créer une table messages :
 
 commande sql : 
 
@@ -75,7 +75,7 @@ CREATE TABLE messages (idMESSAGES int AUTO_INCREMENT,
  
  #########################################
  
- Une fois que la base de donnée Groupomania a été crée et que les tables user et message ont été crée, 
+ Une fois que la base de donnée Groupomania a été crée et que les tables user et message et responses ont été crée, 
 
 dans le terminal (ou l'invite de commande )
 
@@ -90,9 +90,9 @@ Puis lancer la commande suivante :
     créer un fichier .env dans le dossier backend et le remplir de la manière suivante (ne pas ajouter de virgules ou de points virgule nulle part).
     
  
-   NAME = 'DB-NOM'
+   NAME = 'Mysql username'
 
-   PASS = 'DB-PASS'
+   PASS = 'Mysql password'
 
    HOST = 'localhost'
 
