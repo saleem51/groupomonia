@@ -1,7 +1,9 @@
 <template>
     <div id="mur">
       <!--<img id="iconm" alt="logo de l'entreprise" src="../assets/iconpurple.svg">-->
-      <h2>Bienvenu <span>{{data.username}} </span>!</h2>
+      <div class='bienvenu' v-for="usr in user" :key="usr.userId" >
+        <h2>Bienvenu <span>{{usr.username}} </span>!</h2>
+      </div>
       <div class="getMessag">
         <h3 id="mess">Les messages</h3>
         <div id="messdiv" class="msg"  v-for="mess in msg" :key="mess.idMESSAGES">
@@ -11,7 +13,7 @@
           <button @click= "updatemess(mess.idMESSAGES)" v-if="data.username == mess.username || data.status =='admin'" type="button" class="btn btn-success btn-sm mod">modifier</button>
           <button  @click= "deletemess(mess.idMESSAGES)"  v-if="data.username == mess.username || data.status =='admin'" type="button" class="btn btn-danger btn-sm sup"><font-awesome-icon icon="trash"/></button> 
           <button @click= "response(mess.idMESSAGES)" class="btn btn-info btn-circle text-uppercase bt" id="reply"><span class="glyphicon glyphicon-share-alt"></span>Repondre</button>
-          <button @click= "view(mess.idMESSAGES)" class="btn btn-warning btn-circle text-uppercase bt" data-toggle="collapse" href="#/viewresponse"><span class="glyphicon glyphicon-comment"></span>Voir les réponses</button>
+          <button @click= "view(mess.idMESSAGES)" class="btn btn-warning btn-circle text-uppercase bt" id="voir" data-toggle="collapse" href="#/viewresponse"><span class="glyphicon glyphicon-comment"></span>Voir les réponses</button>
         </div>
       </div>
       <h5>Écriver votre message</h5>
@@ -49,7 +51,8 @@ export default {
         date:"",
         moment: moment,
         imess:"",
-        update:""      
+        update:"",
+        user:""      
         
       }
     },
@@ -62,6 +65,17 @@ export default {
          
         })
         .catch(error => console.log(error))
+
+        let data = JSON.parse(this.$localStorage.get('user'))
+        axios.get(`http://localhost:3000/api/getoneuser/${data.userId}`)
+        .then(response => {
+          console.log(response.data)
+          this.user = response.data
+        
+         
+        })
+        .catch(error => console.log(error)) 
+
     },
     methods: {
       
@@ -194,6 +208,10 @@ span{
   color: #FFF;
 }
 
+.bienvuenu{
+  position: relative;
+}
+
 .msg{
   border: 1px solid lightgray;
   width: 50%;
@@ -298,7 +316,7 @@ h5{
   bottom: 10px;
   @media screen and (min-width:320px) and (max-width: 500px){
     position: relative;
-    left: 270px;
+    left: 165px;
     bottom: 40px;
   }
 }
@@ -307,6 +325,30 @@ h5{
   position: relative;
   bottom: 50px;
   right: 120px;
+  @media screen and (min-width:320px) and (max-width: 500px){
+    position: relative;
+    right: 70px;
+    bottom: 40px;
+  }
+
 }
+
+@media screen and (min-width:320px) and (max-width: 500px){
+  
+#reply{
+  position: relative;
+  top: 40px;
+  right: 50px;
+  margin-bottom: 10px;
+}
+
+#voir{
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+
+  }
 
 </style>
