@@ -9,12 +9,11 @@
         <li class="nav-item">
           <router-link class="dropdown-item" to="/home">Accueil</router-link>
         </li>
-        <li class="nav-item">
+        <div  id="change" >
           <router-link  class="dropdown-item" to="/inscription">Inscription</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link  class="dropdown-item" to="/connexion">Connexion</router-link>
-        </li>
+           <router-link  class="dropdown-item" to="/connexion">Connexion</router-link>
+        </div>
+         
       </ul>
     </div>
   </nav>
@@ -25,8 +24,25 @@
 
 export default {
     name: 'espaces',
+    data() {
+
+      return {
+        data:JSON.parse(this.$localStorage.get('user')),
+        toggle: ""
+        
+        
+      }
+    },
+    mounted(){
+      let user = JSON.parse(this.$localStorage.get('user'));
+      let change = document.getElementById('change');
+      if(user !== null){
+        change.style.display = 'none'
+      }
+        
+    },
     methods:{
-      
+       
       }
       
       }
