@@ -36,6 +36,7 @@ export default {
 },
 mounted(){
 
+     //Appel api pour l'affichage d'un utilisateur
      let data = JSON.parse(this.$localStorage.get('user'))
      axios.get(`http://localhost:3000/api/getoneuser/${data.userId}`)
         .then(response => {
@@ -48,7 +49,7 @@ mounted(){
 
 },
 methods:{
-         deco: function(){
+         deco: function(){//Fonction pour deconnecter la session de l'application
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$localStorage.remove('user');
               window.location.href = "http://localhost:8080//#/home";
@@ -58,7 +59,7 @@ methods:{
 
       togglebutton : function(){
 
-          if(this.data !== undefined){
+          if(this.data !== undefined){//Fonction pour l'affichage du boutton
               document.getElementById('toggle').style.display = 'none';
           }
       }

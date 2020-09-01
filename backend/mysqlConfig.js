@@ -7,6 +7,8 @@ const NAME = process.env.NAME;
 const PASS = process.env.PASS;
 const HOST = process.env.HOST;
 
+//Connexion à la base de donnée Mysql
+
 const db = mysql.createConnection({
     host     : HOST,
     user     : NAME,

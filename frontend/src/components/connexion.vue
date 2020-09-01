@@ -1,4 +1,5 @@
 <template>
+<!--Formulaire de connexion-->
   <div id="from">
     <div id="nav">
       <img id="iconpc" alt="logo de l'entreprise" src="../assets/iconpurple.svg">
@@ -40,7 +41,7 @@ export default {
        }
     },
     methods:{
-      envoi : function () {
+      envoi : function () {//envoie des informations de connexion à l'API pour authentification 
         let token = "";
         if(this.username == "" || this.password == ""){
           alert("Veuillez entrer votre email et votre mot de passe pour vous connecter")
@@ -55,10 +56,11 @@ export default {
         {
           headers: {
             'Content-type': 'application/json',
-            'Authorization': `Bearer${token}`
+            'Authorization': `Bearer${token}` //Renvoi du token par l'api en cas d'authentification
               }
         })
-       .then ( (response) => { 
+       .then ( (response) => { //Si authentification réussie autorisation d'accès au mur pour les utilisateur
+                               // ou au tableau de bord admin pour l'administrateur de l'applcation
                     let reponse = response.data;
                     console.log('Connexion réussi !');
                     let userObject = JSON.stringify(reponse);
@@ -78,7 +80,7 @@ export default {
                     
        })
        .catch(() =>{
-         console.log('la connexion a échouée')
+         console.log('la connexion a échouée')//En cas d'echec envoie de l'information à l'utilisateur
          document.querySelector('#smallpass').innerHTML = 'pseudo ou mot de  passe incorrect'
        }) 
 

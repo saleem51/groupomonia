@@ -3,7 +3,7 @@ const router = express.Router();
 const messageCtlr = require('../Controllers/message');
 const auth = require('../middelware/auth')
 
-
+//Routes pour les messages
 
 router.get('/createtable', messageCtlr.createmessageTable)
 router.get('/createreponse', messageCtlr.createresponsetable)

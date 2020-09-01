@@ -1,11 +1,12 @@
 <template>
+<!--Modification des informations utilisateurs-->
     <div id="updateuse">
         <h2>Modifier mes information</h2>
         <h3>Important ! : Pour les champs que vous ne voulez pas modifier veuillez entrer les informations déjà enregistrées</h3>
         <form method="POST" @submit.prevent = "changeuser">
             <div class="form-group col-lg-3 col-sm-6">
             <label for="email">Votre email</label>
-            <input type="email" class="form-control" name="" value="" id="email" pattern="[a-zâäàéèùêëîïôöçñA-Z0-9.-_]+[@]{1}[a-zA_Z0-9.-_]+[.]{1}[a-z]{2,4}" v-model="email" :placeholder="data.email">
+            <input type="email" class="form-control" name=""  value="" id="email" pattern="[a-zâäàéèùêëîïôöçñA-Z0-9.-_]+[@]{1}[a-zA_Z0-9.-_]+[.]{1}[a-z]{2,4}" v-model="email" :placeholder="data.email">
             <small id="emailHelp" class="form-text text-muted"></small>
             </div>
             <div class="form-group col-lg-3 col-sm-6">
@@ -62,7 +63,7 @@ export default {
        }
     },
     methods:{
-      changeuser : function () {
+      changeuser : function () {//Fonction qui envoi les changements de l'utilisateur au serveur
         let token = this.data.token
         if (this.email == "" || this.username == "" || this.password == ""  ){
           alert('Veuillez remplir tous les champs avant d\'envoyer le formulaire !')
@@ -90,20 +91,20 @@ export default {
         
         
       },
-       deco: function(){
+       deco: function(){//Déconnection
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$localStorage.remove('user');
               window.location.href = " http://localhost:8080//#/home";
             }
     },
-     showdiv: function() {
+     showdiv: function() {//Affichage de l'encadré qui aide l'utilisateur à choisir son password
         document.getElementById('showfocus').style.display = 'block';
       },
 
-      maskdiv: function() {
+      maskdiv: function() {//Masquage de l'encadré précédent
         document.getElementById('showfocus').style.display = 'none';
       },
-      verif: function() {
+      verif: function() {//Vérification du mot de passe
         if (this.password != this.password2){
           document.getElementById('confirm').innerHTML = 'Veuillez entrer le même mot de passe'
         } else {

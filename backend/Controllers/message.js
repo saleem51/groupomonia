@@ -1,4 +1,4 @@
-const db = require('../mysqlconfig');
+const db = require('../mysqlconfig');//Configuration information de connections mysql
 const dotenv = require("dotenv");
 dotenv.config({path: './.env'}); 
 
@@ -6,7 +6,7 @@ dotenv.config({path: './.env'});
 
 
 
-
+//Création de la table message 
 exports.createmessageTable = (req, res) => {
     let mess = 'CREATE TABLE messages (idMESSAGES int AUTO_INCREMENT,`idUSERS` int NOT NULL, message text NOT NULL,`username` varchar(100) NOT NULL, `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (idMESSAGES), FOREIGN KEY (`idUSERS`) REFERENCES `user` (`id`) ON DELETE CASCADE)ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8';
     db.query(mess, (err, result) => {
@@ -16,6 +16,8 @@ exports.createmessageTable = (req, res) => {
     });
 };
 
+
+//Poster un message 
 exports.postmessage = (req, res, next) => {
         const message = {
           message: req.body.message,
@@ -34,6 +36,7 @@ exports.postmessage = (req, res, next) => {
       };
 
 
+//Affichage des messages posté 
 exports.getMessages = (req, res, next) => {
     //WHERE idMESSAGES < 133 LIMIT 2
     db.query('SELECT * FROM messages  ORDER BY created_at DESC', (error, result, field) => {
@@ -46,6 +49,7 @@ exports.getMessages = (req, res, next) => {
     
 }
 
+//Affichage du message séléctionner
 exports.getoneMessage = (req, res, next) => {
     
   db.query('SELECT * FROM messages WHERE idMESSAGES= ?',req.params.id, (error, result, field) => {
@@ -57,6 +61,8 @@ exports.getoneMessage = (req, res, next) => {
   })
   
 }
+
+//Effacer un message
 exports.deleteMessage = (req, res, next) => {
       db.query(
         'DELETE FROM messages WHERE idMESSAGES= ?',req.body.id, (error, results, fields) => {
@@ -69,6 +75,7 @@ exports.deleteMessage = (req, res, next) => {
     }
 
 
+    //Modifier un message 
     exports.updateMessage = (req, res, next) => {
       const message = req.body.message
       const id = req.body.id
@@ -86,6 +93,8 @@ exports.deleteMessage = (req, res, next) => {
 
     }
 
+
+    //Création de la table réponse 
     exports.createresponsetable = (req, res) => {
       let ress = 'CREATE TABLE responses (idRESPONSE int AUTO_INCREMENT,idMESSAGES int NOT NULL,`idUSERS` int NOT NULL, response text NOT NULL,`username` varchar(100) NOT NULL, `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP, PRIMARY KEY (idRESPONSE), FOREIGN KEY (`idUSERS`) REFERENCES `user` (`id`) ON DELETE CASCADE)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8';
       db.query(ress, (err, result) => {
@@ -95,6 +104,8 @@ exports.deleteMessage = (req, res, next) => {
       });
   };
 
+
+  //Réponse aux messages 
     exports.responseMessage = (req, res, next) => {
 
       const reponse = {
@@ -115,6 +126,7 @@ exports.deleteMessage = (req, res, next) => {
     }
 
 
+    //Affichage de la réponse sélectionné
     exports.getResponse = (req, res, next) => {
       //ORDER BY created_at DESC
       db.query('SELECT * FROM responses  WHERE idMESSAGES= ?',req.params.id, (error, result, field) => {
@@ -127,6 +139,7 @@ exports.deleteMessage = (req, res, next) => {
 
     }
 
+    //Affichage de toutes les réponses 
     exports.getAllResponses = (req, res, next) => {
 
       db.query('SELECT * FROM responses  ORDER BY created_at DESC', (error, result, field) => {
@@ -139,6 +152,7 @@ exports.deleteMessage = (req, res, next) => {
 
     }
 
+    //Effacer les réponses 
     exports.deleteResponse = (req, res, next) => {
       db.query(
         'DELETE FROM responses WHERE idRESPONSE= ?',req.body.id, (error, results, fields) => {

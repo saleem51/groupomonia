@@ -1,4 +1,5 @@
 <template>
+<!--Barre latérales de navigation-->
   <nav id="navv" class="navbar navbar-expand-lg navbar-light bg-primary">
     <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,13 +28,14 @@ export default {
     data() {
 
       return {
-        data:JSON.parse(this.$localStorage.get('user')),
+        data:JSON.parse(this.$localStorage.get('user')),//Information utilisateur dans le localStorage
         toggle: ""
         
         
       }
     },
     mounted(){
+      //Masquage des menus "Inscription" et "Connexion" lorsque l'utilisateur est connecté 
       let user = JSON.parse(this.$localStorage.get('user'));
       let change = document.getElementById('change');
       if(user !== null){

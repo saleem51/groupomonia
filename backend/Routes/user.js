@@ -12,7 +12,8 @@ const createAccountLimiter = rateLimit ( { // limitation du nombre de création 
       " Trop de comptes créés à partir de cette adresse IP, veuillez réessayer après une heure "
   } ) ;
   
-  
+  //Routes utilisateurs
+
 router.get('/createdb', dataCtlr.createDataBase);
 router.get('/createtables', dataCtlr.createDataTable);
 router.get('/getusers', dataCtlr.getUsers);

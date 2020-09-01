@@ -1,4 +1,5 @@
 <template>
+<!--Formulaire d'inscription-->
   <div id="from">
     <div id="nav">
       <img id="iconp" alt="logo de l'entreprise" src="../assets/iconpurple.svg">
@@ -56,11 +57,11 @@ export default {
        }
     },
     methods:{
-      envoi : function () {
+      envoi : function () {//Fonction qui envoi le formulaire d'inscription à l'API
         let token = ""
         if (this.email == "" || this.username == "" || this.password == ""  ){
           alert('Veuillez remplir tous les champs avant d\'envoyer le formulaire !')
-        }else if (this.password != this.password2){
+        }else if (this.password != this.password2){//Forfitification par la complétion du password 2 fois
           alert('Les deux mots de passe ne sont pas identiques !')
         }else {
         axios.post('http://localhost:3000/api/signup', {
@@ -80,7 +81,7 @@ export default {
          let userObject = JSON.stringify(reponse);
          this.$localStorage.set('user', userObject)
          let user = JSON.parse(this.$localStorage.get('user'));
-         token = user.token;
+         token = user.token;//Token d'authentification
          alert('Félicitation vous êtes désormais inscrit, connectez-vous dès maintenant')
          window.location.href = "http://localhost:8080//#/connexion"
          })
@@ -90,14 +91,14 @@ export default {
         
       },
 
-      showdiv: function() {
+      showdiv: function() {//Affichage d'un encadré pour aider à choisir le mot de passe 
         document.getElementById('showfocus').style.display = 'block';
       },
 
-      maskdiv: function() {
+      maskdiv: function() {//Masquage de l'encadré précédents
         document.getElementById('showfocus').style.display = 'none';
       },
-      verif: function() {
+      verif: function() {//Fonction de vérification du password
         if (this.password != this.password2){
           document.getElementById('confirm').innerHTML = 'Veuillez entrer le même mot de passe'
         } else {

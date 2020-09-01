@@ -1,8 +1,9 @@
 <template>
     <div id="moncompte">
+    <!--Tableau de bord administrateur-->
         <h2>Tableau de bord</h2>
         <div class="users">
-           <h3>Utilisateurs inscrits</h3>
+           <h3>Utilisateurs inscrits</h3><!--Affichage de tous les utilisateurs inscrits-->
             <table class="table table-bordered  table-sm" id='table'>
                 <thead id="thead">
                     <tr class="color">
@@ -25,7 +26,7 @@
             </table>
         </div>
         <div class="messages">
-            <h3>Messages postés</h3>
+            <h3>Messages postés</h3><!--Affichage de tous les messages postés-->
             <table class="table table-bordered  table-sm" id='table2'>
                 <thead id="thead">
                     <tr class="color">
@@ -48,7 +49,7 @@
             </table>
         </div>
         <div class=messages>
-        <h3>Réponses postées</h3>
+        <h3>Réponses postées</h3><!--Affichage de toutes les réponses postées-->
          <table class="table table-bordered  table-sm" id='table3'>
                 <thead id="thead">
                     <tr class="color">
@@ -84,7 +85,7 @@ export default {
     data(){
 
     return {
-        data:JSON.parse(this.$localStorage.get('user')),
+        data:JSON.parse(this.$localStorage.get('user')),//Information utilisateurs dans le localStorage
         userId:"",
         usr:"",
         msg:"",
@@ -95,6 +96,7 @@ export default {
     }
 },
   mounted (){ 
+        //Appel à l'API pour l'affichage de tous les messages
         axios.get('http://localhost:3000/api/getmessages')
         .then(response => {
           console.log(response.data)
@@ -104,6 +106,7 @@ export default {
         })
         .catch(error => console.log(error))
 
+        //Appel à l'API pour l'affichage de tous les utilisateurs
         axios.get('http://localhost:3000/api/getusers')
         .then(res=> {
           console.log(res.data)
@@ -113,6 +116,7 @@ export default {
         })
         .catch(error => console.log(error))
 
+        //Appel à l'API pour l'affichage de tous les réponses
         axios.get('http://localhost:3000/api/getallresponses')
         .then(response => {
           console.log(response.data)
@@ -125,14 +129,14 @@ export default {
     },
 methods:{
 
-   deco: function(){
+   deco: function(){//Fonction pour déconnecter la session de l'application
       if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
         this.$localStorage.remove('user');
         window.location.href = "http://localhost:8080//#/home";
       } 
     },
 
-    deleteusr: function(param) {
+    deleteusr: function(param) {//Fonction pour la suppression des comptes utilisateurs
         let token = this.data.token
         let test = param
 
@@ -158,7 +162,7 @@ methods:{
        }) 
         }
     },
-    deletemsg: function(del) {
+    deletemsg: function(del) {//Fonction de suppression des messages 
         let token = this.data.token
         let deletid = del
 
@@ -185,7 +189,7 @@ methods:{
        }) 
         }
     },
-      deleteresp: function(resp) {
+      deleteresp: function(resp) {//Fonction de suppression des réponses
         let token = this.data.token
         let deletid = resp
 

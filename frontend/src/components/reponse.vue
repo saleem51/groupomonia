@@ -1,4 +1,5 @@
 <template>
+<!--Réponse au message-->
     <div id="mur">
         <h3>Répondre</h3>
         <div  id="mur">
@@ -50,6 +51,7 @@ export default {
     },
     mounted (){ 
         
+        //Appel à l'Api pour afficher le message auquel l'utilisateur souhaite répondre
         axios.get(`http://localhost:3000/api/getonemessage/${idme}`)
         .then(response => {
           console.log(response.data)
@@ -61,14 +63,14 @@ export default {
         .catch(error => console.log(error))
     },
     methods: {
-        deco: function(){
+        deco: function(){//Déconnection
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$session.remove('user');
               window.location.href = "http://localhost:8080//#/home";
             } 
       },
 
-      reponsemess: function () {
+      reponsemess: function () {//Fonction qui envoi la réponse de l'utilisateur au serveur 
 
           
         let token = this.data.token

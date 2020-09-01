@@ -1,4 +1,5 @@
 <template>
+<!--Affichage du fil de discussion-->
     <div id="viewresp">
         <h3>fil de discussion</h3>
         <div  id="resp">
@@ -49,6 +50,7 @@ export default {
     },
     mounted (){ 
         
+        //Appel à l'API du message selectionné 
         axios.get(`http://localhost:3000/api/getonemessage/${idme}`)
         .then(response => {
           console.log(response.data)
@@ -59,6 +61,7 @@ export default {
         })
         .catch(error => console.log(error))
 
+        //Appel à l'Api des réponses en rapport au premier message 
         axios.get(`http://localhost:3000/api/getresponse/${idme}`)
         .then(response => {
           console.log(response.data)

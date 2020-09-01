@@ -1,4 +1,5 @@
 <template>
+<!--Espace personnel utilisateur-->
     <div id="moncompte" >
         <h2>Mon espace</h2>
         <div class="layout">
@@ -36,6 +37,7 @@ export default {
     }
 },
 mounted(){
+    //Appel de l'api pour l'affichafe des informations de l'utilisateur
     let data = JSON.parse(this.$localStorage.get('user'))
      axios.get(`http://localhost:3000/api/getoneuser/${data.userId}`)
         .then(response => {
@@ -49,7 +51,7 @@ mounted(){
 },
 methods:{
 
-    deleteUser : function () {
+    deleteUser : function () {//Fonction qui permet à l'utilisateur de supprimer son compte 
         let token = this.data.token
         if(confirm('Voulez vous vraiment supprimer le compte ?'),confirm('Cette opération est irreversible !')){
              axios.post(`http://localhost:3000/api/deleteUser`, {
@@ -74,7 +76,7 @@ methods:{
         }
     },
 
-         deco: function(){
+         deco: function(){// Fonction qui permet à l'utilisateur de se déconnecter
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$localStorage.remove('user');
               window.location.href = " http://localhost:8080//#/home";
@@ -82,7 +84,7 @@ methods:{
             } 
       },
 
-      updateuser : function() {
+      updateuser : function() {//Fonction qui permet à l'utilisateur de modifier ses informations
 
           let iduser = this.data.userId
 

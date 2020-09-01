@@ -1,6 +1,6 @@
 <template>
+<!--Mur-->
     <div id="mur">
-      <!--<img id="iconm" alt="logo de l'entreprise" src="../assets/iconpurple.svg">-->
       <div class='bienvenu' v-for="usr in user" :key="usr.userId" >
         <h2>Bienvenu <span>{{usr.username}} </span>!</h2>
       </div>
@@ -37,7 +37,7 @@ import axios from 'axios'
 
 
 let moment = require('moment')
-moment.locale('fr');
+moment.locale('fr');//Appel du module moment.js pour affichage à quel moment le message a été écris
 
 
 export default {
@@ -57,6 +57,7 @@ export default {
       }
     },
     mounted (){ 
+      //Appel à l'api pour l'affichage de tous les messages 
         axios.get('http://localhost:3000/api/getmessages')
         .then(response => {
           console.log(response.data)
@@ -67,6 +68,7 @@ export default {
         .catch(error => console.log(error))
 
         let data = JSON.parse(this.$localStorage.get('user'))
+        //Appel à l'Api pour l'affichage des informations utilisateurs
         axios.get(`http://localhost:3000/api/getoneuser/${data.userId}`)
         .then(response => {
           console.log(response.data)
@@ -79,7 +81,7 @@ export default {
     },
     methods: {
       
-      sendMessage : function(){
+      sendMessage : function(){//Fonction qui permet d'envoyer un message
         let token = this.data.token
         let idUSERS = this.data.userId
         let userName = this.data.username
@@ -114,14 +116,14 @@ export default {
        
       },
 
-      deco: function(){
+      deco: function(){//Déconnection
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$session.remove('user');
               window.location.href = "http://localhost:8080//#/home";
             } 
       },
 
-      deletemess: function(delid){
+      deletemess: function(delid){//Fonction qui permet à l'utilisateur de supprimer un message
         let token = this.data.token;
         let idmess = delid
        
@@ -154,7 +156,7 @@ export default {
      
         },
 
-       updatemess: function (idmess) {
+       updatemess: function (idmess) {//Fonction qui permet à l'utilisateur de modifié un message
          
          let imess = idmess
 
@@ -163,7 +165,7 @@ export default {
 
        },
 
-      response: function (idmess){
+      response: function (idmess){//Fonction qui permet à l'utilisateur de répondre à un message posté
 
         let irep = idmess
 

@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');//Cryptage du password
+const jwt = require('jsonwebtoken');//Créatio
 const db = require('../mysqlconfig');
 const dotenv = require("dotenv");
 dotenv.config({path: './.env'}); 
@@ -9,6 +9,7 @@ let email;
 
 
 
+//Création de la base de donnée
 exports.createDataBase = (req, res, next) => {
         let sql = 'CREATE DATABASE Groupomnia';
         db.query(sql, (err, result) => {
@@ -18,6 +19,7 @@ exports.createDataBase = (req, res, next) => {
       });
     };
 
+//Création de la table user 
 exports.createDataTable = (req, res) => {
         let tbl = 'CREATE TABLE user  ( id int NOT NULL AUTO_INCREMENT, email varchar(100) NOT NULL, username  varchar(100) NOT NULL,password varchar(250) NOT NULL, isAdmin tinyint NOT NULL DEFAULT 0 ,PRIMARY KEY (id),UNIQUE KEY id_UNIQUE (id),UNIQUE KEY email_UNIQUE (email),UNIQUE KEY username_UNIQUE (username))ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8';
         db.query(tbl, (err, result) => {
@@ -27,7 +29,8 @@ exports.createDataTable = (req, res) => {
         });
     };
 
-    
+
+//Inscription de l'utilisateur
 exports.signup = (req, res, next) => {
     const user = req.body
     // email = user.email
@@ -47,6 +50,7 @@ exports.signup = (req, res, next) => {
 };  
 
 
+//Connexion de l'utilisateur
 exports.login = (req, res, next) => {
     const username = req.body.username
 	  const password = req.body.password
@@ -85,6 +89,7 @@ exports.login = (req, res, next) => {
     }
   }
 
+  //Suppression du compte utilisateur
   exports.deleteUser = (req, res, next) => {
     db.query(
       'DELETE FROM user WHERE id= ?', req.body.userId, (error,result,field) => {
@@ -99,6 +104,7 @@ exports.login = (req, res, next) => {
     )
   }
 
+  //Affichage de tous les utilisateurs
   exports.getUsers = (req, res, next) => {
     db.query(
       'SELECT id, username, isAdmin, email FROM user WHERE isAdmin=0',
@@ -112,6 +118,7 @@ exports.login = (req, res, next) => {
   }
   
 
+  //Modification des infotmations utilisateurs
   exports.updateUser = (req, res, next) => {
     const email = req.body.email
     const username = req.body.username
@@ -134,6 +141,7 @@ exports.login = (req, res, next) => {
   };
   
 
+  //Affichage de l'utilisateur selectionné
   exports.getOneUser = (req, res, next) => {
 
     db.query(

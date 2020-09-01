@@ -1,4 +1,5 @@
 <template>
+<!--Modification du message-->
     <div  id="mur">
       <div  class="getMessag">
         <h3 id="mess">message à modifier</h3>
@@ -52,6 +53,7 @@ export default {
 
     mounted (){ 
         
+        //Appel à l'Api pour l'affichage du message à modifier 
         axios.get(`http://localhost:3000/api/getonemessage/${idme}`)
         .then(response => {
           console.log(response.data)
@@ -64,7 +66,7 @@ export default {
     },
     methods: {
       
-      updatemessage : function(){
+      updatemessage : function(){//Fonction qui envoi la modification du message au serveur
         let token = this.data.token
         let imess = idme
         if (this.message === ""){
@@ -97,7 +99,7 @@ export default {
        
       },
 
-      deco: function(){
+      deco: function(){//Déconnection
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$session.remove('user');
               window.location.href = "http://localhost:8080//#/home";
