@@ -1,6 +1,6 @@
 <template>
 <!--Barre latérales de navigation-->
-  <nav id="navv" class="navbar navbar-expand-lg navbar-light bg-primary">
+  <nav id="navv" class="navbar navbar-expand-lg navbar-light">
     <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -52,7 +52,15 @@ export default {
 
 </script>
 
+
+
 <style lang="scss" scoped>
+
+
+#navv{
+  background-color: #742ea3;
+}
+
 
 .dropdown-item{
   color:#FFF;
