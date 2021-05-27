@@ -176,8 +176,7 @@ p{
 #iconp{
   width: 5%;
   position: relative;
-  bottom: 18px;
-  margin-right: 250px;
+  margin-right: 300px;
   @media screen and (min-width: 320px) and (max-width: 500px){
     bottom: 0px;
     width: 12%;
