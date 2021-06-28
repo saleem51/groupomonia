@@ -82,7 +82,7 @@ button{
 
 .btn-group{
   position: absolute;
-  left:1160px;
+  left:1490px;
   top: 40px;
   @media screen and  (min-width: 320px) and (max-width:500px) {
       left:40%;
