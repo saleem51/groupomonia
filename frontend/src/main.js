@@ -21,6 +21,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 
 
+
 Vue.use(VueSessionStorage)
 Vue.use(Vuex)
 
