@@ -2,10 +2,17 @@ const http = require('http');
 const app = require('./app');
 const port = 'https://api-mania.osc-fr1.scalingo.io/';
 
+ const server = http.createServer(app);
 
-app.listen(port, function () {
+
+// app.listen(port, function () {
+//   console.log('Example app started!')
+// })
+
+
+ server.listen(port,function () {
   console.log('Example app started!')
-})
+});
 
 // const normalizePort = val => {
 //   const port = parseInt(val, 10);
