@@ -18,7 +18,7 @@ router.get('/createdb', dataCtlr.createDataBase);
 router.get('/createtables', dataCtlr.createDataTable);
 router.get('/getusers', dataCtlr.getUsers);
 router.get('/getoneuser/:id', dataCtlr.getOneUser)
-router.post('/signup', createAccountLimiter, dataCtlr.signup);
+router.post('/signup', dataCtlr.signup);
 router.post('/login', dataCtlr.login);
 router.post('/deleteUser',auth, dataCtlr.deleteUser);
 router.post('/updateuser/:id', dataCtlr.updateUser);
