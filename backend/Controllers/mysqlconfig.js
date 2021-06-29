@@ -14,7 +14,7 @@ const db = mysql.createConnection({
     host     : 'mysql-saleem51.alwaysdata.net',
     password : 'Tutrouverapa26?',
     database: 'saleem51_groupomania',
-    user: 'saleem51@2a00:b6e0:1:210:1::1'
+    user: 'saleem51'
 });
 
 db.connect((err) => {
