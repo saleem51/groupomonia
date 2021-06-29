@@ -20,8 +20,8 @@ app.use(bodyParser.json());//body parser pour convertir les objets JSON des requ
 app.use(express.json());
 
 
-app.use('/api/', dataRoute);
-app.use('/api/', messageRoute);
+app.use('https://api-mania.osc-fr1.scalingo.io/', dataRoute);
+app.use('https://api-mania.osc-fr1.scalingo.io/', messageRoute);
 
 
 
