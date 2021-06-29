@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');//Cryptage du password
 const jwt = require('jsonwebtoken');//Créatio
-const db = require('../mysqlconfig');
+const db = require('./mysqlconfig');
 const dotenv = require("dotenv");
 dotenv.config({path: './.env'}); 
 const TOKEN = process.env.TOKEN;

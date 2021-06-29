@@ -1,4 +1,4 @@
-const db = require('../mysqlconfig');//Configuration information de connections mysql
+const db = require('./mysqlconfig');//Configuration information de connections mysql
 const dotenv = require("dotenv");
 dotenv.config({path: './.env'}); 
 
