@@ -4,7 +4,7 @@
         <footer class="page-footer font-small special-color-dark pt-4">
             <div class="container">
                 <div id="foot" class="footer-copyright text-center py-3">© 2020 Copyright:
-                    <a href="https://groupomania.com/">Groupomania</a>
+                    <a href="https://nostalgic-perlman-a79228.netlify.app">Groupomania</a>
                 </div>
             </div>
         </footer>

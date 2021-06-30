@@ -2,6 +2,7 @@
   <div class="home">
     <Accueil></Accueil>>
     <buttonadmin></buttonadmin>
+    <buttondeco></buttondeco>
     <footbottom></footbottom>
   </div>
 </template>
@@ -11,6 +12,7 @@
 
 import Accueil from '../components/Accueil.vue'
 import buttonadmin from '../components/buttonadmin.vue'
+import buttondeco from '../components/buttondeco.vue'
 import footbottom from '../components/footbottom.vue'
 
 export default{
@@ -19,6 +21,7 @@ export default{
   components:{
     'Accueil' : Accueil,
     'buttonadmin': buttonadmin,
+    'buttondeco' : buttondeco,
     'footbottom' : footbottom
     
   }

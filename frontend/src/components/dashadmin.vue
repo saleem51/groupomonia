@@ -97,7 +97,7 @@ export default {
 },
   mounted (){ 
         //Appel à l'API pour l'affichage de tous les messages
-        axios.get('http://localhost:3000/api/getmessages')
+        axios.get('https://api-mania.osc-fr1.scalingo.io/message/getmessages')
         .then(response => {
           console.log(response.data)
           this.msg = response.data
@@ -107,7 +107,7 @@ export default {
         .catch(error => console.log(error))
 
         //Appel à l'API pour l'affichage de tous les utilisateurs
-        axios.get('http://localhost:3000/api/getusers')
+        axios.get('https://api-mania.osc-fr1.scalingo.io/message/getusers')
         .then(res=> {
           console.log(res.data)
           this.usr = res.data
@@ -117,7 +117,7 @@ export default {
         .catch(error => console.log(error))
 
         //Appel à l'API pour l'affichage de tous les réponses
-        axios.get('http://localhost:3000/api/getallresponses')
+        axios.get('https://api-mania.osc-fr1.scalingo.io//message/getallresponses')
         .then(response => {
           console.log(response.data)
           this.res = response.data
@@ -132,7 +132,7 @@ methods:{
    deco: function(){//Fonction pour déconnecter la session de l'application
       if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
         this.$localStorage.remove('user');
-        window.location.href = "http://localhost:8080//#/home";
+        window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/home";
       } 
     },
 
@@ -142,7 +142,7 @@ methods:{
 
         if(confirm('Voulez vous vraiment supprimer le compte ?'),confirm('Cette opération est irreversible !')){
 
-             axios.post(`http://localhost:3000/api/deleteUser`, {
+             axios.post(`https://api-mania.osc-fr1.scalingo.io/message/deleteUser`, {
 
                 userId:test
         },
@@ -169,7 +169,7 @@ methods:{
         if(confirm('Voulez vous vraiment supprimer le message ?'),confirm('Cette opération est irreversible !')){
 
              console.log(deletid)
-             axios.post(`http://localhost:3000/api/deletemessage`, {
+             axios.post(`https://api-mania.osc-fr1.scalingo.io/message/deletemessage`, {
 
                 id:deletid
         },
@@ -196,7 +196,7 @@ methods:{
         if(confirm('Voulez vous vraiment supprimer le message ?'),confirm('Cette opération est irreversible !')){
 
              console.log(deletid)
-             axios.post(`http://localhost:3000/api/deleteresponse`, {
+             axios.post(`https://api-mania.osc-fr1.scalingo.io/message/deleteresponse`, {
 
                 id:deletid
         },

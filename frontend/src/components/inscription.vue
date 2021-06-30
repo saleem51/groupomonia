@@ -64,7 +64,7 @@ export default {
         }else if (this.password != this.password2){//Forfitification par la complétion du password 2 fois
           alert('Les deux mots de passe ne sont pas identiques !')
         }else {
-        axios.post('http://localhost:3000/api/signup', {
+        axios.post('https://api-mania.osc-fr1.scalingo.io/user/signup', {
           email: this.email,
           username: this.username,
           password: this.password,
@@ -83,7 +83,7 @@ export default {
          let user = JSON.parse(this.$localStorage.get('user'));
          token = user.token;//Token d'authentification
          alert('Félicitation vous êtes désormais inscrit, connectez-vous dès maintenant')
-         window.location.href = "http://localhost:8080//#/connexion"
+         window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/connexion"
          })
        .catch(() => console.log('Echec de l\'inscription')) 
         }

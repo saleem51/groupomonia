@@ -2,6 +2,7 @@
   <div class="dashadmin">
     <dashadmin></dashadmin>
     <buttonadmin></buttonadmin>
+    <buttondeco></buttondeco>
     <footbottom></footbottom>
   </div>
 </template>
@@ -10,6 +11,7 @@
 
 
 import dashadmin from '../components/dashadmin.vue'
+import buttondeco from '../components/buttondeco.vue'
 import buttonadmin from '../components/buttonadmin.vue'
 import footbottom from '../components/footbottom.vue'
 
@@ -20,12 +22,13 @@ export default{
     
     'dashadmin' : dashadmin,
     'buttonadmin': buttonadmin,
+    'buttondeco' : buttondeco,
     'footbottom' : footbottom
    
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style>
 
 </style>

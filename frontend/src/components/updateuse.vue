@@ -45,8 +45,6 @@
 let url = document.location.href;
 let id = url.substring(39, 42);
 
-
-
 import axios from 'axios'
 
 export default {
@@ -70,7 +68,7 @@ export default {
         }else if (this.password != this.password2){
           alert('Les deux mots de passe ne sont pas identiques !')
         }else {
-        axios.post(`http://localhost:3000/api/updateuser/${id}`, {
+        axios.post(`https://api-mania.osc-fr1.scalingo.io/user/updateuser/${id}`, {
           email: this.email,
           username: this.username,
           password: this.password,
@@ -84,17 +82,15 @@ export default {
        .then (() => {
          console.log('vos informations ont bien été modifiées !')
          alert('vos informations ont bien été modifiées !')
-         window.location.href = "http://localhost:8080//#/compte"
+         window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/compte"
          })
        .catch(() => console.log('Les informations n\'ont pas été modifées une erreur est survenue')) 
         }
-        
-        
       },
        deco: function(){//Déconnection
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$localStorage.remove('user');
-              window.location.href = " http://localhost:8080//#/home";
+              window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/home";
             }
     },
      showdiv: function() {//Affichage de l'encadré qui aide l'utilisateur à choisir son password
@@ -155,7 +151,7 @@ form{
   display: none;
   border: 1px solid black;
   position: relative;
-  bottom: 300px;
+  bottom: 250px;
   left: 800px;
   width:35%;
   @media screen and (max-width: 1024px) {

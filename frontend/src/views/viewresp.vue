@@ -6,8 +6,6 @@
 
 <script>
 
-
-
 import viewresponse from '../components/viewresponse.vue'
 
 export default {

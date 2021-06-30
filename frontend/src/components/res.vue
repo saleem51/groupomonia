@@ -54,7 +54,7 @@ export default {
     mounted (){ 
         
         //Appel à l'Api pour l'affichage du message à modifier 
-        axios.get(`http://localhost:3000/api/getonemessage/${idme}`)
+        axios.get(`https://api-mania.osc-fr1.scalingo.io/message/getonemessage/${idme}`)
         .then(response => {
           console.log(response.data)
           this.msg = response.data
@@ -72,7 +72,7 @@ export default {
         if (this.message === ""){
           alert('Vous n\'avez rien écris vous ne pouvez pas envoyé un message vide !')
         } else{
-           axios.post('http://localhost:3000/api/updatemessage',
+           axios.post('https://api-mania.osc-fr1.scalingo.io/message/updatemessage',
         {
           message: this.message,
           token: this.data.token,
@@ -88,7 +88,7 @@ export default {
                     console.log('message modifié')
                     this.message ==="";
                     alert('votre message a bien été modifié !')
-                    window.location.href = "http://localhost:8080//#/mur"
+                    window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/mur"
 
                     
        })
@@ -102,7 +102,7 @@ export default {
       deco: function(){//Déconnection
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$session.remove('user');
-              window.location.href = "http://localhost:8080//#/home";
+              window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/home";
             } 
       }
     }

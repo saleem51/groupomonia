@@ -33,7 +33,6 @@ console.log(idme)
 let moment = require('moment')
 moment.locale('fr');
 
-
 export default {
        name:'viewresponse',
     data() {
@@ -51,32 +50,22 @@ export default {
     mounted (){ 
         
         //Appel à l'API du message selectionné 
-        axios.get(`http://localhost:3000/api/getonemessage/${idme}`)
+        axios.get(`https://api-mania.osc-fr1.scalingo.io/message/getonemessage/${idme}`)
         .then(response => {
           console.log(response.data)
           this.msg = response.data
-          
-        
-         
         })
         .catch(error => console.log(error))
 
         //Appel à l'Api des réponses en rapport au premier message 
-        axios.get(`http://localhost:3000/api/getresponse/${idme}`)
+        axios.get(`https://api-mania.osc-fr1.scalingo.io/message/getresponse/${idme}`)
         .then(response => {
           console.log(response.data)
           this.view = response.data
-          
-        
-         
         })
         .catch(error => console.log(error))
-
     },
     methods: {
-       
-      
-
       }
     }
 </script>

@@ -47,7 +47,7 @@ export default {
           alert("Veuillez entrer votre email et votre mot de passe pour vous connecter")
         } else {
           
-          axios.post('http://localhost:3000/api/login', {
+          axios.post('https://api-mania.osc-fr1.scalingo.io/user/login', {
           username: this.username,
           password: this.password,
           
@@ -68,10 +68,10 @@ export default {
                     let user = JSON.parse(this.$localStorage.get('user'));
                     token = user.token;
                     if(user.status =='admin'){
-                      window.location.href = "http://localhost:8080//#/dashadmin"
+                      window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/dashadmin";
                       location.reload(true);
                     }else{
-                      window.location.href = "http://localhost:8080//#/mur";
+                      window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/mur";
                       location.reload(true);
                     }
                     

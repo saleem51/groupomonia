@@ -39,7 +39,7 @@ export default {
 mounted(){
     //Appel de l'api pour l'affichafe des informations de l'utilisateur
     let data = JSON.parse(this.$localStorage.get('user'))
-     axios.get(`http://localhost:3000/api/getoneuser/${data.userId}`)
+     axios.get(`https://api-mania.osc-fr1.scalingo.io/user/getoneuser/${data.userId}`)
         .then(response => {
           console.log(response.data)
           this.user = response.data
@@ -54,7 +54,7 @@ methods:{
     deleteUser : function () {//Fonction qui permet à l'utilisateur de supprimer son compte 
         let token = this.data.token
         if(confirm('Voulez vous vraiment supprimer le compte ?'),confirm('Cette opération est irreversible !')){
-             axios.post(`http://localhost:3000/api/deleteUser`, {
+             axios.post(`https://api-mania.osc-fr1.scalingo.io/user/deleteUser`, {
                  userId: this.data.userId
         },
         {
@@ -67,7 +67,7 @@ methods:{
                     this.$localStorage.remove('user')
                     document.getElementById('moncompte').style.display = 'none'
                     alert('votre compte a bien été supprimé !')
-                    window.location.href = " http://localhost:8080//#/home"
+                    window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/home"
                     
        })
        .catch(() =>{
@@ -79,7 +79,7 @@ methods:{
          deco: function(){// Fonction qui permet à l'utilisateur de se déconnecter
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$localStorage.remove('user');
-              window.location.href = " http://localhost:8080//#/home";
+              window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/home";
               location.reload(true);
             } 
       },
@@ -88,7 +88,7 @@ methods:{
 
           let iduser = this.data.userId
 
-         window.location.href = `http://localhost:8080//#/updateuser?id=${iduser}`
+         window.location.href = `https://nostalgic-perlman-a79228.netlify.app//#/updateuser?id=${iduser}`
          location.reload(true);
 
 

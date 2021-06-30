@@ -38,7 +38,7 @@ mounted(){
 
      //Appel api pour l'affichage d'un utilisateur
      let data = JSON.parse(this.$localStorage.get('user'))
-     axios.get(`http://localhost:3000/api/getoneuser/${data.userId}`)
+     axios.get(`https://api-mania.osc-fr1.scalingo.io/user/getoneuser/${data.userId}`)
         .then(response => {
           console.log(response.data)
           this.user = response.data
@@ -52,15 +52,17 @@ methods:{
          deco: function(){//Fonction pour deconnecter la session de l'application
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$localStorage.remove('user');
-              window.location.href = "http://localhost:8080//#/home";
+              window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/home";
               location.reload(true);
             } 
       },
 
       togglebutton : function(){
 
-          if(this.data !== undefined){//Fonction pour l'affichage du boutton
+          if(this.data === ""){//Fonction pour l'affichage du boutton
               document.getElementById('toggle').style.display = 'none';
+          }else{
+              document.getElementById('toggle').style.display = 'block'
           }
       }
 }
@@ -82,7 +84,7 @@ button{
 
 .btn-group{
   position: absolute;
-  left:1490px;
+  left:1090px;
   top: 40px;
   @media screen and  (min-width: 320px) and (max-width:500px) {
       left:40%;

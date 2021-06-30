@@ -58,7 +58,7 @@ export default {
     },
     mounted (){ 
       //Appel à l'api pour l'affichage de tous les messages 
-        axios.get('http://localhost:3000/api/getmessages')
+        axios.get('https://api-mania.osc-fr1.scalingo.io/message/getmessages')
         .then(response => {
           console.log(response.data)
           this.msg = response.data
@@ -69,7 +69,7 @@ export default {
 
         let data = JSON.parse(this.$localStorage.get('user'))
         //Appel à l'Api pour l'affichage des informations utilisateurs
-        axios.get(`http://localhost:3000/api/getoneuser/${data.userId}`)
+        axios.get(`https://api-mania.osc-fr1.scalingo.io/user/getoneuser/${data.userId}`)
         .then(response => {
           console.log(response.data)
           this.user = response.data
@@ -88,7 +88,7 @@ export default {
         if (this.message === ""){
           alert('Vous n\'avez rien écris vous ne pouvez pas envoyé un message vide !')
         } else{
-           axios.post('http://localhost:3000/api/postmessage',
+           axios.post('https://api-mania.osc-fr1.scalingo.io/message/postmessage',
         {
           message: this.message,
           token: this.data.token,
@@ -119,7 +119,7 @@ export default {
       deco: function(){//Déconnection
             if(window.confirm('Voulez-vous vraiment vous déconnecter ?')){
               this.$session.remove('user');
-              window.location.href = "http://localhost:8080//#/home";
+              window.location.href = "https://nostalgic-perlman-a79228.netlify.app//#/home";
             } 
       },
 
@@ -129,11 +129,9 @@ export default {
        
         if(confirm('êtes vous sûr de vouloir supprimer ce message ?') && confirm('cela effacera définitivement le message')){
 
-          axios.post('http://localhost:3000/api/deletemessage',
+          axios.post('https://api-mania.osc-fr1.scalingo.io/message/deletemessage',
           {
-       
             id: idmess
-           
           },
           {
           headers: {
@@ -160,7 +158,7 @@ export default {
          
          let imess = idmess
 
-         window.location.href = `http://localhost:8080//#/res?id=${imess}`
+         window.location.href = `https://nostalgic-perlman-a79228.netlify.app//#/res?id=${imess}`
          location.reload(true);
 
        },
@@ -169,7 +167,7 @@ export default {
 
         let irep = idmess
 
-         window.location.href = `http://localhost:8080//#/reponses?id=${irep}`
+         window.location.href = `https://nostalgic-perlman-a79228.netlify.app//#/reponses?id=${irep}`
          location.reload(true);
 
 
@@ -178,7 +176,7 @@ export default {
       view : function (idmess) {
         let iview = idmess
 
-         window.location.href = `http://localhost:8080//#/viewresp?id=${iview}`
+         window.location.href = `https://nostalgic-perlman-a79228.netlify.app//#/viewresp?id=${iview}`
          location.reload(true);
       }
     }
@@ -281,7 +279,7 @@ h5{
 
 #envoi{
   position: relative;
-  top: 30px;
+  top: 70px;
 }
 
 .form-group{
