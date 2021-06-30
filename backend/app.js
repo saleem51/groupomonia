@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use((req, res, next) => { // configuration des CORS, pour permettre à diff�
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());//body parser pour convertir les objets JSON des requêtes POST
+app.use(cors());
 app.use(express.json());
 
 
