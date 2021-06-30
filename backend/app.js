@@ -23,7 +23,7 @@ app.use(express.json());
 
 
 app.use('/user/', dataRoute);
-app.use('messsage/', messageRoute);
+app.use('/messsage/', messageRoute);
 
 
 
