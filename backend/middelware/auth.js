@@ -3,7 +3,7 @@ const dotenv = require('dotenv');
 
 dotenv.config({path: './.env'});
 
-const TOKEN = process.env.TOKEN;
+const TOKEN = 'Tutrouverapa26?';
 
 
 // permet d'authentifier les requetes grâce au token
