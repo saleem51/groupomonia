@@ -13,6 +13,9 @@ const auth = require('../middelware/auth');
 //   } ) ;
   
   //Routes utilisateurs
+router.get('/test', function (req,res) {
+   res.send('ça fonctionnne')
+});
 
 router.get('/createdb', dataCtlr.createDataBase);
 router.get('/createtables', dataCtlr.createDataTable);
